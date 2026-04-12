@@ -1,0 +1,42 @@
+name: AI Compliance Check
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'   # every Monday at 9am UTC
+  push:
+    paths:
+      - 'pipeline.py'     # also runs if pipeline logic changes
+      - 'agent.py'        # also runs if agent logic changes
+  workflow_dispatch:      # allows manual trigger from GitHub UI
+
+jobs:
+  compliance-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run audit pipeline
+        run: python pipeline.py
+
+      - name: Run compliance agent
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python agent.py
+
+      - name: Commit outputs to repo
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/audit_report.json reports/
+          git diff --staged --quiet || git commit -m "chore: automated compliance check $(date -u +%Y-%m-%d)"
+          git push
