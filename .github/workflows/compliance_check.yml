@@ -19,7 +19,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # fetch full history so rebase has all context
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -46,4 +46,4 @@ jobs:
           git add data/audit_report.json reports/
           git diff --staged --quiet || git commit -m "chore: automated compliance check $(date
   -u +%Y-%m-%d)"
-          git push
+          git push --force-with-lease
