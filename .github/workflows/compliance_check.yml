@@ -34,12 +34,12 @@ jobs:
 
       - name: Test API key
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY_COMPLIANCE }}
+          ANTHROPIC_API_KEY: "${{ secrets.ANTHROPIC_API_KEY_COMPLIANCE }}"
         run: python test_api_key.py
 
       - name: Run compliance agent
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY_COMPLIANCE }}
+          ANTHROPIC_API_KEY: "${{ secrets.ANTHROPIC_API_KEY_COMPLIANCE }}"
         run: python agent.py
 
       - name: Commit outputs to repo
