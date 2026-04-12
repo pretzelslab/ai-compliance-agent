@@ -1,0 +1,75 @@
+{
+  "report_metadata": {
+    "generated_at": "2026-04-12T04:54:49.577307+00:00",
+    "dataset": "COMPAS Recidivism (ProPublica, n=6130)",
+    "model": "COMPAS v1.0",
+    "domain": "Criminal justice \u2014 recidivism prediction",
+    "pipeline_version": "1.0.0"
+  },
+  "thresholds_applied": {
+    "eu_ai_act_dir": 1.25,
+    "us_fourfifths": 0.8,
+    "nist_fpr_gap_pp": 15.0,
+    "nist_fnr_gap_pp": 15.0
+  },
+  "group_findings": {
+    "African-American": {
+      "n": 3175,
+      "flag_rate": 57.6,
+      "fpr": 42.3,
+      "fnr": 28.5,
+      "dir": 1.74,
+      "eu_ai_act": "FAIL",
+      "us_fourfifths": "PASS",
+      "nist_fpr_gap": 29.5,
+      "nist_fpr": "FAIL",
+      "nist_fnr_gap": 0.0,
+      "nist_fnr": "PASS",
+      "severity": "DOUBLE-CRITICAL"
+    },
+    "Caucasian": {
+      "n": 2103,
+      "flag_rate": 33.1,
+      "fpr": 22.0,
+      "fnr": 49.6,
+      "dir": 1.0,
+      "eu_ai_act": "PASS",
+      "us_fourfifths": "PASS",
+      "nist_fpr_gap": 9.2,
+      "nist_fpr": "PASS",
+      "nist_fnr_gap": 21.1,
+      "nist_fnr": "FAIL",
+      "severity": "WARNING"
+    },
+    "Hispanic": {
+      "n": 509,
+      "flag_rate": 27.7,
+      "fpr": 19.4,
+      "fnr": 58.2,
+      "dir": 0.84,
+      "eu_ai_act": "PASS",
+      "us_fourfifths": "PASS",
+      "nist_fpr_gap": 6.6,
+      "nist_fpr": "PASS",
+      "nist_fnr_gap": 29.7,
+      "nist_fnr": "FAIL",
+      "severity": "WARNING"
+    },
+    "Other": {
+      "n": 343,
+      "flag_rate": 20.4,
+      "fpr": 12.8,
+      "fnr": 66.1,
+      "dir": 0.62,
+      "eu_ai_act": "PASS",
+      "us_fourfifths": "PASS",
+      "nist_fpr_gap": 0.0,
+      "nist_fpr": "PASS",
+      "nist_fnr_gap": 37.6,
+      "nist_fnr": "FAIL",
+      "severity": "WARNING"
+    }
+  },
+  "overall_verdict": "DOUBLE-CRITICAL",
+  "deployment_recommendation": "BLOCK \u2014 remediation required before deployment"
+}
