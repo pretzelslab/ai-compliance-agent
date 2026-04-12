@@ -35,10 +35,7 @@ jobs:
       - name: Test API key
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY_COMPLIANCE }}
-        run: python -c "import os,anthropic; key=os.environ.get('ANTHROPIC_API_KEY','');
-print(f'len={len(key)} prefix={key[:8]}'); anthropic.Anthropic(api_key=key).messages.create(mo
-del='claude-haiku-4-5-20251001',max_tokens=10,messages=[{'role':'user','content':'hi'}]);
-print('OK')"
+        run: python test_api_key.py
 
       - name: Run compliance agent
         env:
