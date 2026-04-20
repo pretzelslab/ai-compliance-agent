@@ -1,54 +1,42 @@
 # COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
 
-**EXECUTIVE SUMMARY**
-COMPAS v1.0 has breached critical regulatory thresholds across multiple jurisdictions, creating material legal and ethical liability.
-
----
-
 ## 1. REGULATORY THRESHOLDS BREACHED
 
-**African-American Cohort (n=3,175) — DOUBLE-CRITICAL:**
-- Disparate Impact Ratio: 1.74x (threshold: ≤1.25x) — **breach of 39%**
-- False Positive Rate: 42.3% (threshold: ≤15pp gap) — **breach of 27.3pp**
-- Violation: EU AI Act Article 15 (high-risk bias) and NIST AI RMF
+**Critical Violations:**
+- **EU AI Act Disparate Impact Ratio (DIR):** African-American applicants flagged at 1.74x vs. Caucasian baseline (1.0x). Threshold: ≤1.25x. **Breach: +0.49x or 39% overage.**
+- **NIST False Positive Rate (FPR) Gap:** African-American FPR=42.3% vs. Caucasian FPR=22.0%. Threshold gap: ≤15.0pp. **Breach: +20.3pp or 135% overage.**
 
-**All Groups — Secondary Violations:**
-- Caucasian FNR: 49.6% vs. threshold ≤15pp gap (breach of 34.6pp)
-- Hispanic FNR: 58.2% (breach of 43.2pp)
-- Other FNR: 66.1% (breach of 51.1pp)
+**Secondary Violations:**
+- **NIST False Negative Rate (FNR) Gap:** All groups failed. Caucasian FNR=49.6% vs. African-American FNR=28.5%, differential of 21.1pp (**+6.1pp breach**). Similar disparities across Hispanic (58.2%) and Other (66.1%) populations.
 
 ---
 
 ## 2. AFFECTED GROUPS & REAL-WORLD HARM
 
-**Primary Impact:** 3,175 African-American defendants face 74% higher false positive rates, resulting in over 1,300 individuals incorrectly flagged as high-risk.
+**Primary Impact (n=3,175 African-Americans):**
+- 1,296 individuals falsely flagged as high-risk (42.3% FPR) — directly affecting parole/bail decisions, employment, and housing eligibility
+- 1.74x disparity suggests algorithmic bias in feature weighting or training data, perpetuating systemic inequity in criminal justice
 
-**Secondary Impact:** 2,955 Caucasian, Hispanic, and Other individuals face disproportionately high false negative rates (49.6%-66.1%), potentially releasing genuinely high-risk individuals.
-
-**Institutional Harm:** Predictive bias perpetuates systemic racism in bail, sentencing, and parole decisions, undermining due process and equal protection.
+**Secondary Impact (n=2,955 Caucasian, Hispanic, Other):**
+- Higher false negatives increase public safety risks; lower false positives create appearance of fairness while masking underlying bias
 
 ---
 
 ## 3. REMEDIATION OPTIONS
 
-**Option A: Immediate Deployment Halt (0-30 days)**
-- Suspend COMPAS v1.0 use pending audit completion
-- Retroactively review 3,175+ African-American cases decided using this model
-- Cost: High legal/operational burden but zero continued harm
-- Timeline: 30 days decision; 90-180 days case review
+**Option 1: Immediate Suspension & Audit (0-30 days)**
+- Remove COMPAS from production for all decisions
+- Conduct bias audit with external auditors
+- **Timeline:** 30 days; Cost: High; Risk: Operational disruption
 
-**Option B: Fairness Constraint Retraining (30-120 days)**
-- Retrain model with hard fairness constraints (FPR ≤20% all groups, DIR ≤1.25x)
-- Validate on held-out test set; obtain independent audit
-- Deploy with monitoring dashboards and quarterly bias audits
-- Timeline: 120 days to deployment; ongoing compliance
+**Option 2: Threshold Recalibration (30-90 days)**
+- Retrain model with fairness constraints (e.g., equalized FPR across groups to ≤25pp)
+- Implement group-specific risk thresholds; deploy A/B testing
+- **Timeline:** 90 days; Cost: Medium; Risk: Technical complexity
 
-**Option C: Hybrid Human-in-Loop System (60-180 days)**
-- Retain model as advisory (not deterministic) with mandatory human override protocols
-- Require documented justification for decisions deviating from fairness thresholds
-- Implement bias training for judicial users
-- Timeline: 180 days implementation; continuous monitoring
+**Option 3: Human-in-the-Loop Hybrid (60-120 days)**
+- Maintain COMPAS as advisory only; require human review for flagged cases
+- Implement bias mitigation retraining + mandatory override documentation
+- **Timeline:** 120 days; Cost: Medium-High; Risk: Moderate
 
----
-
-**RECOMMENDATION:** Option A (halt) immediately, followed by Option B (retraining). Continued deployment constitutes civil rights violation.
+**Recommendation:** **Option 1 (suspension) immediately, transitioning to Option 3 (hybrid) for operational continuity.**
