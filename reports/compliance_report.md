@@ -2,42 +2,35 @@
 
 ## 1. REGULATORY THRESHOLDS BREACHED
 
-**Critical Violations:**
-- **EU AI Act Disparate Impact Ratio (DIR):** African-American DIR = 1.74x vs. threshold of 1.25x (39% overage)
-- **NIST False Positive Rate Gap:** African-American FPR = 42.3% vs. Caucasian 22.0% = 20.3pp gap (35% above 15pp threshold)
-- **NIST False Negative Rate Gaps:** Caucasian (49.6%), Hispanic (58.2%), Other (66.1%) all exceed 15pp threshold by 234.6%, 288%, and 341% respectively
+**African-American cohort (n=3,175):**
+- Disparate Impact Ratio (DIR): 1.74x vs. 1.25x threshold = **0.49x overage (39% breach)**
+- False Positive Rate: 42.3% vs. 15.0pp gap tolerance = **27.3pp overage (182% breach)**
+- False Negative Rate: 28.5% vs. 15.0pp gap tolerance = **13.5pp overage (90% breach)**
 
-**Secondary Violation:**
-- 4/5ths rule not directly breached but DIR findings indicate systemic discrimination risk
+**Caucasian cohort (n=2,103):**
+- False Negative Rate: 49.6% vs. 15.0pp gap = **34.6pp overage (231% breach)**
 
-## 2. AFFECTED GROUPS & REAL-WORLD HARM
+**Hispanic cohort (n=509):**
+- False Negative Rate: 58.2% vs. 15.0pp gap = **43.2pp overage (288% breach)**
 
-**Primary Harm (African-American, n=3,175):**
-- 1.74x higher false positive rate: ~640 individuals incorrectly flagged as high-risk, facing enhanced supervision, bail denial, or incarceration
-- 28.5% false negative rate: ~905 genuine high-risk individuals released without appropriate monitoring
+**Other cohort (n=343):**
+- False Negative Rate: 66.1% vs. 15.0pp gap = **51.1pp overage (341% breach)**
 
-**Secondary Harm (All Groups, n=6,130):**
-- Caucasian defendants: 49.6% false negatives risk community safety gaps (1,042 individuals)
-- Hispanic/Other minorities: 58.2%-66.1% false negatives create release risks for ~455 individuals
-- Compounding: Systematic over-incarceration of African-Americans with under-monitoring of other groups
+## 2. AFFECTED GROUPS AND REAL-WORLD HARM
 
-## 3. REMEDIATION OPTIONS & TIMELINES
+3,175 African-American defendants face **1.74x higher flagging rates** for recidivism despite comparable risk profiles, resulting in disproportionate detention, bail denial, and sentencing recommendations. The 42.3% false positive rate means approximately **1,343 individuals are incorrectly classified as high-risk**, driving discriminatory criminal justice outcomes.
 
-**Option A – Model Withdrawal (Immediate, 0-30 days)**
-- Cease COMPAS v1.0 deployment across all jurisdictions
-- Revert to human-only risk assessment
-- Cost: High operational disruption; timeline feasible
+Non-Black cohorts experience severe **false negative underdetection** (49.6%-66.1%), resulting in ~1,500+ high-risk individuals categorized as low-risk, creating public safety gaps and reduced intervention.
 
-**Option B – Bias Mitigation Retraining (60-120 days)**
-- Retrain with balanced datasets; apply fairness constraints (DIR ≤1.25x, FPR gap ≤15pp)
-- Implement threshold adjustments per demographic group
-- Requires external validation before redeployment
-- Cost: Moderate; reduces false positives for African-Americans
+## 3. REMEDIATION OPTIONS
 
-**Option C – Phased Restriction with Monitoring (45-180 days)**
-- Deploy as advisory-only tool (no binding decisions) for 6 months
-- Collect ground-truth outcome data by demographic
-- Parallel human review mandatory for high-risk classifications
-- Transition to Option B if drift controlled; escalate to Option A if violations persist
+**Option A (Immediate - 30 days):**
+Withdraw COMPAS v1.0 from deployment; implement manual review for all African-American cases; issue guidance to courts on documented bias.
 
-**Recommended:** Option C (phased) transitioning to Option B (retraining) with quarterly audits.
+**Option B (Short-term - 90 days):**
+Retrain model with stratified sampling and fairness constraints; implement group-specific thresholds; conduct bias audit pre-deployment; establish monitoring dashboard.
+
+**Option C (Medium-term - 180 days):**
+Replace COMPAS entirely with alternative validated tool (e.g., machine-learning-free actuarial methods); conduct judicial retraining; audit 2-year case history for decisions influenced by biased scores; establish compensation framework.
+
+**Recommendation:** Combine A + B. Immediate withdrawal protects affected populations; parallel retraining ensures continuity while addressing breaches comprehensively.
