@@ -1,27 +1,28 @@
 **MEMORANDUM**
 
 **TO:** Chief Risk Officer
-**FROM:** AI Compliance Analysis
+**FROM:** AI Compliance Analysis Team
 **DATE:** [Current Date]
-**RE:** DEPLOYMENT BLOCK — COMPAS v1.0 Model
+**RE:** DEPLOYMENT BLOCK — COMPAS v1.0 Recidivism Model
 
 ---
 
-**DECISION: MODEL MUST NOT BE DEPLOYED**
+**RECOMMENDATION: DO NOT DEPLOY**
 
 **Specific Regulatory Breaches:**
-COMPAS v1.0 violates two critical compliance frameworks:
-- **EU AI Act:** African-American disparity index of 1.74x exceeds the 1.25x threshold (breach margin: +39%)
-- **NIST Standards:** False positive rate gap of 20.3 percentage points (African-American 42.3% vs. Caucasian 22.0%) exceeds 15.0pp tolerance
+COMPAS v1.0 violates three compliance frameworks:
+- **EU AI Act:** African-American cohort demonstrates disparate impact ratio of 1.74x (threshold: ≤1.25x)
+- **NIST Standards:** False positive rate disparity of 20.3 percentage points vs. Caucasian baseline (threshold: ≤15.0pp)
+- **4/5ths Rule:** African-American approval ratio of 0.62 vs. majority group (threshold: ≥0.80)
 
-**Most Severely Affected Group & Real-World Impact:**
-African-American defendants (n=3,175) face disproportionate false positive risk at 42.3%, nearly double the Caucasian rate. **Real consequence:** Innocent individuals are flagged for elevated supervision or denied bail at 1.74x higher rates than demographically equivalent Caucasian counterparts, perpetuating systemic criminal justice bias.
+**Disproportionately Affected Population:**
+African-American defendants (n=3,175) face the severest harm. With FPR at 42.3%, the model generates false positive flags in nearly 1 of 2 cases, systematically misidentifying recidivism risk. Real-world consequence: increased pretrial detention, bail denials, and sentencing enhancements for an already over-represented population in criminal justice systems.
 
 **Required Actions Before Redeployment:**
-1. Conduct algorithmic audit to identify and remediate African-American FPR drivers
-2. Retrain model using bias-mitigation techniques; validate DIR ≤1.25x and FPR gap ≤15.0pp across all groups
-3. Implement independent third-party validation (n≥500 per demographic)
-4. Establish ongoing monitoring dashboard with quarterly disparity reporting
-5. Obtain explicit legal and ethics review before any deployment consideration
+1. Conduct root-cause analysis of training data bias (n=6,130 dataset composition)
+2. Implement stratified rebalancing and fairness-constrained model retraining
+3. Establish independent algorithmic audit confirming all thresholds met across all groups
+4. Develop demographic-specific validation protocols
+5. Obtain legal sign-off from General Counsel
 
-**Recommendation:** Do not redeploy without structural redesign.
+**Status:** BLOCKED pending completion of above remediation.
