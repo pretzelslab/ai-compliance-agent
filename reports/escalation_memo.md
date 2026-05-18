@@ -1,28 +1,27 @@
 **MEMORANDUM**
 
-**TO:** Chief Risk Officer
-**FROM:** AI Compliance Analysis Team
-**DATE:** [Current Date]
-**RE:** DEPLOYMENT BLOCK — COMPAS v1.0 Recidivism Model
+**TO:** Chief Risk Officer  
+**FROM:** AI Compliance Analysis  
+**DATE:** [Current Date]  
+**RE:** DEPLOYMENT BLOCK — COMPAS v1.0 Recidivism Model  
+**CLASSIFICATION:** CRITICAL
 
 ---
 
-**RECOMMENDATION: DO NOT DEPLOY**
+**DEPLOYMENT DETERMINATION:** Model must not be deployed in production.
 
-**Specific Regulatory Breaches:**
-COMPAS v1.0 violates three compliance frameworks:
-- **EU AI Act:** African-American cohort demonstrates disparate impact ratio of 1.74x (threshold: ≤1.25x)
-- **NIST Standards:** False positive rate disparity of 20.3 percentage points vs. Caucasian baseline (threshold: ≤15.0pp)
-- **4/5ths Rule:** African-American approval ratio of 0.62 vs. majority group (threshold: ≥0.80)
+**REGULATORY BREACHES:**
+COMPAS v1.0 violates the EU AI Act (high-risk classification) and NIST AI RMF standards across multiple fairness metrics. African-American cohort (n=3,175) exhibits disparate impact ratio of 1.74x—significantly exceeding the 1.25x threshold—with false positive rate of 42.3% (27.3 percentage points above the 15pp NIST limit).
 
-**Disproportionately Affected Population:**
-African-American defendants (n=3,175) face the severest harm. With FPR at 42.3%, the model generates false positive flags in nearly 1 of 2 cases, systematically misidentifying recidivism risk. Real-world consequence: increased pretrial detention, bail denials, and sentencing enhancements for an already over-represented population in criminal justice systems.
+**MOST SEVERELY AFFECTED GROUP:**
+African-American individuals face 74% higher risk classification relative to Caucasian applicants. Real-world consequence: systematic overestimation of recidivism likelihood, resulting in elevated pretrial detention recommendations, longer sentences, and restricted parole eligibility for approximately 3,175 individuals annually.
 
-**Required Actions Before Redeployment:**
-1. Conduct root-cause analysis of training data bias (n=6,130 dataset composition)
-2. Implement stratified rebalancing and fairness-constrained model retraining
-3. Establish independent algorithmic audit confirming all thresholds met across all groups
-4. Develop demographic-specific validation protocols
-5. Obtain legal sign-off from General Counsel
+**REQUIRED ACTIONS BEFORE REDEPLOYMENT:**
+1. Conduct algorithmic audit identifying root causes of 1.74x disparity
+2. Retrain model with fairness constraints and demographic stratification
+3. Implement threshold adjustment to achieve DIR ≤ 1.25x while monitoring FPR/FNR parity
+4. Obtain independent third-party validation (ProPublica methodology)
+5. Establish bias monitoring dashboard for ongoing compliance tracking
+6. Secure legal review and stakeholder consultation with affected communities
 
-**Status:** BLOCKED pending completion of above remediation.
+Redeployment prohibited until all requirements satisfied and re-audited.
