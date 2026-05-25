@@ -4,24 +4,28 @@
 **FROM:** AI Compliance Analysis  
 **DATE:** [Current Date]  
 **RE:** DEPLOYMENT BLOCK — COMPAS v1.0 Recidivism Model  
-**CLASSIFICATION:** CRITICAL
+**CLASSIFICATION:** DOUBLE-CRITICAL
 
 ---
 
-**DEPLOYMENT DETERMINATION:** Model must not be deployed in production.
+**DEPLOYMENT STATUS: DO NOT DEPLOY**
 
-**REGULATORY BREACHES:**
-COMPAS v1.0 violates the EU AI Act (high-risk classification) and NIST AI RMF standards across multiple fairness metrics. African-American cohort (n=3,175) exhibits disparate impact ratio of 1.74x—significantly exceeding the 1.25x threshold—with false positive rate of 42.3% (27.3 percentage points above the 15pp NIST limit).
+COMPAS v1.0 exhibits material regulatory breaches precluding production deployment:
 
-**MOST SEVERELY AFFECTED GROUP:**
-African-American individuals face 74% higher risk classification relative to Caucasian applicants. Real-world consequence: systematic overestimation of recidivism likelihood, resulting in elevated pretrial detention recommendations, longer sentences, and restricted parole eligibility for approximately 3,175 individuals annually.
+- **EU AI Act violation:** African-American disparity ratio of 1.74x exceeds 1.25x threshold by 39%
+- **NIST FPR breach:** African-American false positive rate (42.3%) exceeds threshold by 27.3 percentage points
+- **Statistical inequity:** African-American defendants face 1.74x higher disparate impact versus Caucasian cohort (n=3,175 vs. n=2,103)
+
+**MOST SEVERELY AFFECTED GROUP & CONSEQUENCE:**
+
+African-American defendants (n=3,175, 51.8% of dataset) experience discriminatory risk scoring. Real-world impact: elevated false positive classifications directly drive wrongful detention recommendations, violating due process and perpetuating systemic criminal justice bias.
 
 **REQUIRED ACTIONS BEFORE REDEPLOYMENT:**
-1. Conduct algorithmic audit identifying root causes of 1.74x disparity
-2. Retrain model with fairness constraints and demographic stratification
-3. Implement threshold adjustment to achieve DIR ≤ 1.25x while monitoring FPR/FNR parity
-4. Obtain independent third-party validation (ProPublica methodology)
-5. Establish bias monitoring dashboard for ongoing compliance tracking
-6. Secure legal review and stakeholder consultation with affected communities
 
-Redeployment prohibited until all requirements satisfied and re-audited.
+1. Conduct root-cause analysis of training data representativeness and algorithmic bias sources
+2. Implement fairness-constrained retraining achieving DIR ≤1.25x across all protected groups
+3. Validate remediated model against all thresholds (EU AI Act, NIST, 4/5ths rule)
+4. Commission independent third-party audit
+5. Establish continuous monitoring protocols post-deployment
+
+**Redeployment prohibited until Compliance confirms remediation.**

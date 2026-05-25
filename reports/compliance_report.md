@@ -1,40 +1,33 @@
 # COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
 
-## REGULATORY BREACHES
+## 1. REGULATORY THRESHOLDS BREACHED
 
 **Critical Violations:**
-- **EU AI Act Disparate Impact Ratio (DIR):** African-American cohort at 1.74x (threshold: ≤1.25x) — **39% overage**
-- **NIST False Positive Rate (FPR) Gap:** African-American at 42.3% vs. Caucasian at 22.0% = **20.3 percentage point gap** (threshold: ≤15pp) — **35% exceedance**
+- **African-American group (n=3,175):** Disparate Impact Ratio of 1.74x exceeds EU AI Act threshold of 1.25x by **39.2%** — DOUBLE-CRITICAL
+- **False Positive Rate gap:** 42.3% (African-American) vs. 22.0% (Caucasian) = **20.3 percentage points** exceeds NIST threshold of 15.0pp by **35.3%** — CRITICAL
 
 **Secondary Violations:**
-- **NIST False Negative Rate (FNR) Gap:** All groups exceed 15pp threshold. Hispanic cohort shows 58.2% FNR (43.2pp overage); Caucasian 49.6% (34.6pp overage)
-- **4/5ths Rule:** Hispanic approval ratio 0.84x approaches but remains compliant at threshold edge
+- False Negative Rate gaps across all groups exceed 15.0pp threshold, ranging 13.5-53.1pp above acceptable limits
+- Approval ratio disparity: African-American defendants face 74% higher false positive rates, violating fairness principles underlying 4/5ths rule
 
-## AFFECTED GROUPS & REAL-WORLD HARM
+## 2. AFFECTED GROUPS & REAL-WORLD HARM
 
-**3,175 African-Americans** face disproportionate false positive rates (42.3%), resulting in 1,347 individuals incorrectly flagged as high-recidivism risk. These overclassifications drive unjust detention recommendations and bail denials.
+**Primary Harm (African-Americans, n=3,175):**
+- 1,344 individuals falsely flagged as high-risk (42.3% FPR) — leading to unjustified incarceration, bail denial, and enhanced sentences
+- 904 individuals underestimated as low-risk (28.5% FNR) — receiving insufficient monitoring
 
-**2,103 Caucasians** experience 49.6% false negatives, allowing approximately 1,043 genuinely high-risk individuals to receive lenient assessments—creating public safety gaps.
+**Secondary Harm (Other groups, n=2,952):**
+- Caucasian defendants disproportionately missed (49.6% FNR), creating inconsistent public safety outcomes
+- Hispanic and Other groups underrepresented in high-risk predictions (DIR <1.0), receiving lighter assessments
 
-**509 Hispanic individuals** suffer the highest FNR (58.2%), with 295 misclassifications, compounding underrepresentation in risk identification.
+**Systemic Impact:** Model deployed in 52+ U.S. jurisdictions affecting ~500,000+ annual risk assessments.
 
-## REMEDIATION OPTIONS
+## 3. REMEDIATION OPTIONS WITH TIMELINES
 
-**Option 1: Immediate Deployment Halt (0-30 days)**
-- Suspend COMPAS v1.0 in sentencing contexts pending audit completion
-- Redirect to human-only assessment protocols
-- Timeline: 30 days
+| Option | Action | Timeline | Cost |
+|--------|--------|----------|------|
+| **A: Immediate Suspension** | Halt deployment; audit all prior decisions; flag cases for judicial review | 30 days | High (legal/administrative) |
+| **B: Algorithmic Retraining** | Retrain with stratified sampling and fairness constraints; establish FPR parity target <25pp | 90 days | Medium |
+| **C: Human-in-Loop Hybrid** | Require judicial override for African-American predictions; implement bias training | 60 days | Low-Medium |
 
-**Option 2: Algorithmic Retraining with Fairness Constraints (60-120 days)**
-- Retrain model with enforced parity constraints (DIR <1.15x, FPR gap <10pp)
-- Validate across stratified test sets; requires 40% additional labeled data
-- Implement continuous monitoring dashboards
-- Timeline: 120 days
-
-**Option 3: Hybrid Human-AI Framework (45-90 days)**
-- Deploy COMPAS as advisory-only (flagged output confidence <75%)
-- Require mandatory human review for all African-American and Hispanic assessments
-- Establish appeals process with documented override authority
-- Timeline: 90 days
-
-**Recommendation:** Option 2 combined with Option 3 interim measures minimizes harm while enabling long-term compliance.
+**Recommended:** Option A (30 days) → Option B (90 days). Immediate suspension protects civil rights; retraining addresses root causes.
