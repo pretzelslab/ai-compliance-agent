@@ -1,33 +1,23 @@
 # COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
 
-## 1. REGULATORY THRESHOLDS BREACHED
+**REGULATORY VIOLATIONS**
 
-**Critical Violations:**
-- **African-American group (n=3,175):** Disparate Impact Ratio of 1.74x exceeds EU AI Act threshold of 1.25x by **39.2%** — DOUBLE-CRITICAL
-- **False Positive Rate gap:** 42.3% (African-American) vs. 22.0% (Caucasian) = **20.3 percentage points** exceeds NIST threshold of 15.0pp by **35.3%** — CRITICAL
+The model breaches critical fairness thresholds across multiple jurisdictions:
 
-**Secondary Violations:**
-- False Negative Rate gaps across all groups exceed 15.0pp threshold, ranging 13.5-53.1pp above acceptable limits
-- Approval ratio disparity: African-American defendants face 74% higher false positive rates, violating fairness principles underlying 4/5ths rule
+- **EU AI Act (Disparate Impact Ratio):** African-American DIR of 1.74x exceeds the 1.25x threshold by 39%, representing the most severe violation.
+- **NIST FPR Gap:** African-American false positive rate of 42.3% exceeds the 15.0 percentage point threshold by 27.3pp—nearly triple the permitted disparity.
+- **NIST FNR Gap:** All groups breach FNR thresholds, with Hispanic (58.2%) and Other (66.1%) populations exceeding limits by 43.2pp and 51.1pp respectively.
 
-## 2. AFFECTED GROUPS & REAL-WORLD HARM
+**AFFECTED POPULATIONS & HARM**
 
-**Primary Harm (African-Americans, n=3,175):**
-- 1,344 individuals falsely flagged as high-risk (42.3% FPR) — leading to unjustified incarceration, bail denial, and enhanced sentences
-- 904 individuals underestimated as low-risk (28.5% FNR) — receiving insufficient monitoring
+Of 6,130 individuals assessed, 3,175 African-American defendants face systematic disadvantage. With a 1.74x disparate impact ratio, the model is 74% more likely to classify African-American defendants as high-risk compared to Caucasian counterparts. The 42.3% false positive rate means approximately 1,343 African-American individuals are incorrectly flagged as recidivism risks, directly influencing bail decisions, sentencing recommendations, and parole eligibility. This perpetuates systemic bias, disproportionately extending incarceration for already overrepresented populations.
 
-**Secondary Harm (Other groups, n=2,952):**
-- Caucasian defendants disproportionately missed (49.6% FNR), creating inconsistent public safety outcomes
-- Hispanic and Other groups underrepresented in high-risk predictions (DIR <1.0), receiving lighter assessments
+**REMEDIATION OPTIONS**
 
-**Systemic Impact:** Model deployed in 52+ U.S. jurisdictions affecting ~500,000+ annual risk assessments.
+**Option 1 (Immediate - 30 days):** Deploy model moratorium for pretrial risk assessment. Reinstate human review for all high-risk classifications. Cost: operational; Risk: maintains status quo harm.
 
-## 3. REMEDIATION OPTIONS WITH TIMELINES
+**Option 2 (Short-term - 90 days):** Retrain COMPAS v1.0 using stratified sampling and fairness constraints (equal FPR ≤20pp across groups). Implement separate calibration by race. Cost: $150K-200K; Risk: performance trade-offs.
 
-| Option | Action | Timeline | Cost |
-|--------|--------|----------|------|
-| **A: Immediate Suspension** | Halt deployment; audit all prior decisions; flag cases for judicial review | 30 days | High (legal/administrative) |
-| **B: Algorithmic Retraining** | Retrain with stratified sampling and fairness constraints; establish FPR parity target <25pp | 90 days | Medium |
-| **C: Human-in-Loop Hybrid** | Require judicial override for African-American predictions; implement bias training | 60 days | Low-Medium |
+**Option 3 (Long-term - 180 days):** Decommission COMPAS; develop alternative risk assessment using structured professional judgment without algorithmic scoring. Audit third-party validation independently. Cost: $400K-600K; Risk: implementation complexity.
 
-**Recommended:** Option A (30 days) → Option B (90 days). Immediate suspension protects civil rights; retraining addresses root causes.
+**Recommendation:** Pursue Option 1 immediately while implementing Option 3. Current deployment violates EU AI Act Article 10 and exposes organizations to liability under equal protection standards.
