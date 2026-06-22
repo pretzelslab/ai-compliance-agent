@@ -3,37 +3,30 @@
 ## 1. REGULATORY THRESHOLDS BREACHED
 
 **Critical Violations:**
-- **EU AI Act Disparate Impact Ratio (DIR):** African-American group breached at 1.74x (threshold: ≤1.25x), exceeding limit by **39.2%**
-- **NIST False Positive Rate Gap:** African-American FPR of 42.3% versus Caucasian baseline 22.0% = **20.3 percentage points**, exceeding 15.0pp threshold by **35.3%**
+- **EU AI Act Disparate Impact Ratio (DIR):** African-American DIR = 1.74x vs. threshold of 1.25x — **BREACH of 0.49x (39% overage)**
+- **NIST False Positive Rate Gap:** African-American FPR = 42.3% vs. Caucasian 22.0% = **20.3pp gap vs. 15.0pp threshold — BREACH of 5.3pp**
 
-**Secondary Violations:**
-- **NIST False Negative Rate Gaps:** All groups exceed 15.0pp threshold. Caucasian FNR gap (49.6% vs. African-American 28.5%) = **21.1pp excess**; Hispanic and Other groups show escalating disparities up to 66.1%
+**Moderate Violations:**
+- **NIST False Negative Rate Gaps:** All racial groups exceed 15.0pp threshold:
+  - Caucasian: 49.6% vs. African-American 28.5% = 21.1pp gap (BREACH of 6.1pp)
+  - Hispanic: 58.2% vs. African-American 28.5% = 29.7pp gap (BREACH of 14.7pp)
+  - Other: 66.1% vs. African-American 28.5% = 37.6pp gap (BREACH of 22.6pp)
 
 ## 2. AFFECTED GROUPS & REAL-WORLD HARM
 
-**Primary Impact (n=3,175 African-Americans):**
-- 42.3% false positive rate means ~1,342 individuals incorrectly flagged as high-risk, leading to enhanced monitoring, bail denial, or sentencing recommendations
-- 1.74x disparate impact ratio indicates systematically biased risk assessment
+**Primary Harm (African-American defendants, n=3,175):**
+- 1,340 individuals (42.3%) falsely flagged as high-risk, resulting in unjust detention, bail denial, and sentencing enhancement
+- Systemic over-incarceration driven by 1.74x elevated risk scoring
 
-**Secondary Impact (n=2,955 other defendants):**
-- Disproportionate false negatives for Hispanic (58.2%) and Other (66.1%) groups create under-flagging, inconsistently applied public safety protections
-- Cascading effects: bail decisions, parole eligibility, resource allocation bias
+**Secondary Harm (Other groups, n=852):**
+- Hispanic and Other populations experience severe false negatives (58-66%), allowing genuine risk cases to be under-supervised
 
 ## 3. REMEDIATION OPTIONS
 
-**Option A (Immediate):** Model withdrawal and manual review protocol
-- Timeline: 0-30 days
-- Cost: High operational burden
-- Effectiveness: Eliminates risk; restores due process
+| Option | Timeline | Actions |
+|--------|----------|---------|
+| **A: Immediate Suspension** | 30 days | Halt deployment; audit data for systemic bias; retrain with balanced datasets and fairness constraints |
+| **B: Recalibrated Thresholds** | 90 days | Implement race-stratified decision boundaries; establish separate FPR/FNR limits per demographic; continuous monitoring |
+| **C: Hybrid Human-AI Review** | 60 days | Require human review for African-American cases; deploy alternative model; phase out COMPAS by 180 days |
 
-**Option B (Short-term):** Retrain with balanced dataset and bias-correction algorithms (e.g., fairness constraints)
-- Timeline: 90-180 days
-- Cost: Moderate ($250K-500K estimated)
-- Effectiveness: Addresses DIR and FPR gaps; requires validation testing
-
-**Option C (Parallel):** Deploy human-in-the-loop review with stratified auditing
-- Timeline: 30-60 days initial; ongoing
-- Cost: Low-moderate (staffing)
-- Effectiveness: Mitigates harm while Option B executes; requires judicial coordination
-
-**Recommendation:** Implement Option A immediately pending Option B completion, with Option C as interim safeguard.
+**Recommendation:** Option C (hybrid approach) offers fastest compliance with risk mitigation while Option A ensures legal defensibility.
