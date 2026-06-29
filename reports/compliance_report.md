@@ -3,30 +3,43 @@
 ## 1. REGULATORY THRESHOLDS BREACHED
 
 **Critical Violations:**
-- **EU AI Act Disparate Impact Ratio (DIR):** African-American DIR = 1.74x vs. threshold of 1.25x — **BREACH of 0.49x (39% overage)**
-- **NIST False Positive Rate Gap:** African-American FPR = 42.3% vs. Caucasian 22.0% = **20.3pp gap vs. 15.0pp threshold — BREACH of 5.3pp**
+- **EU AI Act Disparate Impact Ratio (DIR):** African-American group at 1.74x vs. 1.25x threshold — **39% overage**
+- **NIST False Positive Rate (FPR) Gap:** African-American group at 42.3% vs. Caucasian 22.0% = **20.3 percentage point gap** exceeds 15.0pp limit by **35%**
 
-**Moderate Violations:**
-- **NIST False Negative Rate Gaps:** All racial groups exceed 15.0pp threshold:
-  - Caucasian: 49.6% vs. African-American 28.5% = 21.1pp gap (BREACH of 6.1pp)
-  - Hispanic: 58.2% vs. African-American 28.5% = 29.7pp gap (BREACH of 14.7pp)
-  - Other: 66.1% vs. African-American 28.5% = 37.6pp gap (BREACH of 22.6pp)
+**Secondary Violations:**
+- **NIST False Negative Rate (FNR) Gap:** All non-African-American groups exceed 15.0pp threshold:
+  - Caucasian: 49.6% gap (**231% over limit**)
+  - Hispanic: 58.2% gap (**288% over limit**)
+  - Other: 66.1% gap (**341% over limit**)
 
 ## 2. AFFECTED GROUPS & REAL-WORLD HARM
 
-**Primary Harm (African-American defendants, n=3,175):**
-- 1,340 individuals (42.3%) falsely flagged as high-risk, resulting in unjust detention, bail denial, and sentencing enhancement
-- Systemic over-incarceration driven by 1.74x elevated risk scoring
+**Primary Impact (3,175 African-Americans):**
+- 42.3% false positive rate means ~1,341 individuals incorrectly flagged as high-risk, leading to enhanced supervision, bail denials, and sentencing recommendations they don't merit
 
-**Secondary Harm (Other groups, n=852):**
-- Hispanic and Other populations experience severe false negatives (58-66%), allowing genuine risk cases to be under-supervised
+**Secondary Impact (2,955 non-African-American defendants):**
+- Caucasian defendants underidentified (49.6% FNR): ~1,043 actual high-risk individuals missed
+- Hispanic/Other groups face 58-66% miss rates, compromising public safety assessments
 
-## 3. REMEDIATION OPTIONS
+**Systemic Harm:** Reinforces racial bias in criminal justice; African-Americans receive disproportionate restrictions; system fails to protect public from legitimately high-risk individuals of other demographics.
 
-| Option | Timeline | Actions |
-|--------|----------|---------|
-| **A: Immediate Suspension** | 30 days | Halt deployment; audit data for systemic bias; retrain with balanced datasets and fairness constraints |
-| **B: Recalibrated Thresholds** | 90 days | Implement race-stratified decision boundaries; establish separate FPR/FNR limits per demographic; continuous monitoring |
-| **C: Hybrid Human-AI Review** | 60 days | Require human review for African-American cases; deploy alternative model; phase out COMPAS by 180 days |
+## 3. REMEDIATION OPTIONS & TIMELINES
 
-**Recommendation:** Option C (hybrid approach) offers fastest compliance with risk mitigation while Option A ensures legal defensibility.
+**Option A – Immediate Suspension (0 days)**
+- Halt COMPAS deployment; revert to manual assessments pending remediation
+- *Timeline:* Effective immediately
+- *Cost:* High operational burden; timeline to fix: 6-12 months
+
+**Option B – Threshold Recalibration (30-60 days)**
+- Retrain model with balanced fairness constraints (FPR/FNR parity ≤5pp)
+- Implement race-stratified thresholds where legally permissible
+- *Timeline:* 60 days to deployment; requires legal review
+- *Risk:* May sacrifice overall accuracy
+
+**Option C – Hybrid Human Review (15-90 days)**
+- Deploy model with mandatory human override for African-American flagged cases
+- Parallel retrain Model v2.0 with fairness audits every 30 days
+- *Timeline:* Interim controls in 15 days; full remediation 90 days
+- *Benefit:* Reduces immediate harm while enabling systematic fix
+
+**Recommendation:** Option C (hybrid) offers fastest harm reduction with structured remediation pathway.
