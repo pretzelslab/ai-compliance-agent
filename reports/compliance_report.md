@@ -1,45 +1,44 @@
 # COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
 
+**CRITICAL FINDINGS**
+
 ## 1. REGULATORY THRESHOLDS BREACHED
 
-**Critical Violations:**
-- **EU AI Act Disparate Impact Ratio (DIR):** African-American group at 1.74x vs. 1.25x threshold — **39% overage**
-- **NIST False Positive Rate (FPR) Gap:** African-American group at 42.3% vs. Caucasian 22.0% = **20.3 percentage point gap** exceeds 15.0pp limit by **35%**
+**African-American Group (n=3,175):**
+- Disparate Impact Ratio: 1.74x (threshold: ≤1.25x) — **39% over limit**
+- False Positive Rate: 42.3% (NIST threshold: ≤15pp gap) — **27.3 percentage points over**
+- EU AI Act: FAILED (high-risk application with unacceptable bias)
 
-**Secondary Violations:**
-- **NIST False Negative Rate (FNR) Gap:** All non-African-American groups exceed 15.0pp threshold:
-  - Caucasian: 49.6% gap (**231% over limit**)
-  - Hispanic: 58.2% gap (**288% over limit**)
-  - Other: 66.1% gap (**341% over limit**)
+**All Minority Groups (n=3,027 combined):**
+- False Negative Rates: 28.5%-66.1% (threshold: ≤15pp gap) — **13.5-51.1pp over limit**
+- Approval ratio failure under 4/5ths rule for African-American group (1.74/1.0 = inverse of 0.57)
 
 ## 2. AFFECTED GROUPS & REAL-WORLD HARM
 
-**Primary Impact (3,175 African-Americans):**
-- 42.3% false positive rate means ~1,341 individuals incorrectly flagged as high-risk, leading to enhanced supervision, bail denials, and sentencing recommendations they don't merit
+**Primary Victims: African-American defendants (3,175 individuals)**
+- 42.3% falsely flagged as high-risk (1,342+ false positives)
+- 1.74x higher likelihood of adverse decisions vs. Caucasian defendants
+- Result: Over-incarceration, extended sentences, surveillance intensification, parole denial
 
-**Secondary Impact (2,955 non-African-American defendants):**
-- Caucasian defendants underidentified (49.6% FNR): ~1,043 actual high-risk individuals missed
-- Hispanic/Other groups face 58-66% miss rates, compromising public safety assessments
+**Secondary Impact: Hispanic (n=509) and Other groups (n=343)**
+- Disproportionately low flagging increases release risk (58-66% false negatives)
+- Systemic under-protection and inequitable risk assessment
 
-**Systemic Harm:** Reinforces racial bias in criminal justice; African-Americans receive disproportionate restrictions; system fails to protect public from legitimately high-risk individuals of other demographics.
+## 3. REMEDIATION OPTIONS
 
-## 3. REMEDIATION OPTIONS & TIMELINES
+**Option A: Immediate Suspension (0-30 days)**
+- Halt deployment pending bias remediation; revert to human review only
+- Cost: Operational delay; benefit: eliminates active harm
+- Implement fairness constraints and rebalancing by Day 90
 
-**Option A – Immediate Suspension (0 days)**
-- Halt COMPAS deployment; revert to manual assessments pending remediation
-- *Timeline:* Effective immediately
-- *Cost:* High operational burden; timeline to fix: 6-12 months
+**Option B: Constrained Deployment (30-60 days)**
+- Deploy with mandatory human override for African-American defendants
+- Reduce DIR threshold to ≤1.15x via threshold adjustment
+- Parallel audit with alternative models; full retraining by Day 120
 
-**Option B – Threshold Recalibration (30-60 days)**
-- Retrain model with balanced fairness constraints (FPR/FNR parity ≤5pp)
-- Implement race-stratified thresholds where legally permissible
-- *Timeline:* 60 days to deployment; requires legal review
-- *Risk:* May sacrifice overall accuracy
+**Option C: Model Retraining & Revalidation (60-180 days)**
+- Stratified resampling to address demographic imbalance (3,175 vs. 2,103)
+- Implement fairness metrics (equalized odds); retrain COMPAS v1.1
+- Independent validation audit by Day 180; phased redeployment thereafter
 
-**Option C – Hybrid Human Review (15-90 days)**
-- Deploy model with mandatory human override for African-American flagged cases
-- Parallel retrain Model v2.0 with fairness audits every 30 days
-- *Timeline:* Interim controls in 15 days; full remediation 90 days
-- *Benefit:* Reduces immediate harm while enabling systematic fix
-
-**Recommendation:** Option C (hybrid) offers fastest harm reduction with structured remediation pathway.
+**RECOMMENDATION:** Option A + accelerated Option C. Current deployment violates EU AI Act §6(1) and creates documented discriminatory harm unsuitable for criminal justice applications.
