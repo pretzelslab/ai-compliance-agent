@@ -1,44 +1,49 @@
 # COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
 
-**CRITICAL FINDINGS**
+## REGULATORY BREACHES
 
-## 1. REGULATORY THRESHOLDS BREACHED
+**Critical Violations:**
+- **EU AI Act Disparate Impact Ratio (DIR):** African-American group at 1.74x vs. 1.25x threshold—**39% overage**
+- **NIST False Positive Rate (FPR):** African-American group at 42.3% vs. 15pp gap limit—**27.3 percentage point violation**
+- **NIST False Negative Rate (FNR):** All groups exceed limits by 13.5–51.1pp; Caucasian worst at 49.6% vs. limit
 
-**African-American Group (n=3,175):**
-- Disparate Impact Ratio: 1.74x (threshold: ≤1.25x) — **39% over limit**
-- False Positive Rate: 42.3% (NIST threshold: ≤15pp gap) — **27.3 percentage points over**
-- EU AI Act: FAILED (high-risk application with unacceptable bias)
+**Secondary Violations:**
+- US 4/5ths rule implicitly breached: Hispanic (0.84x) and Other (0.62x) show reverse discrimination signals
 
-**All Minority Groups (n=3,027 combined):**
-- False Negative Rates: 28.5%-66.1% (threshold: ≤15pp gap) — **13.5-51.1pp over limit**
-- Approval ratio failure under 4/5ths rule for African-American group (1.74/1.0 = inverse of 0.57)
+---
 
-## 2. AFFECTED GROUPS & REAL-WORLD HARM
+## AFFECTED GROUPS & REAL-WORLD HARM
 
-**Primary Victims: African-American defendants (3,175 individuals)**
-- 42.3% falsely flagged as high-risk (1,342+ false positives)
-- 1.74x higher likelihood of adverse decisions vs. Caucasian defendants
-- Result: Over-incarceration, extended sentences, surveillance intensification, parole denial
+**Primary Impact:** 3,175 African-American defendants face:
+- **2.74x higher false positive rate** (42.3% vs. 22% for Caucasians)—innocent individuals flagged as high-risk, leading to longer sentences, bail denial, or enhanced monitoring
+- Systemic bias embedding historical discrimination into sentencing decisions
 
-**Secondary Impact: Hispanic (n=509) and Other groups (n=343)**
-- Disproportionately low flagging increases release risk (58-66% false negatives)
-- Systemic under-protection and inequitable risk assessment
+**Secondary Impact:** 2,103 Caucasian defendants experience:
+- 49.6% false negative rate—dangerous offenders released/undertreated, compromising public safety
 
-## 3. REMEDIATION OPTIONS
+---
 
-**Option A: Immediate Suspension (0-30 days)**
-- Halt deployment pending bias remediation; revert to human review only
-- Cost: Operational delay; benefit: eliminates active harm
-- Implement fairness constraints and rebalancing by Day 90
+## REMEDIATION OPTIONS
 
-**Option B: Constrained Deployment (30-60 days)**
-- Deploy with mandatory human override for African-American defendants
-- Reduce DIR threshold to ≤1.15x via threshold adjustment
-- Parallel audit with alternative models; full retraining by Day 120
+**Option 1: Immediate Decommission (0–30 days)**
+- Remove COMPAS v1.0 from production pending retraining
+- Implement human-only review for pending cases
+- Cost: High operational burden; Legal risk reduction: Maximum
 
-**Option C: Model Retraining & Revalidation (60-180 days)**
-- Stratified resampling to address demographic imbalance (3,175 vs. 2,103)
-- Implement fairness metrics (equalized odds); retrain COMPAS v1.1
-- Independent validation audit by Day 180; phased redeployment thereafter
+**Option 2: Bias Mitigation + Retraining (60–120 days)**
+- Retrain on balanced datasets; apply fairness constraints (equalized FPR ≤20pp across groups)
+- Implement threshold adjustment per demographic group
+- Audit requirement: Monthly reporting to regulators
+- Risk: Requires validation; continued exposure during retraining
 
-**RECOMMENDATION:** Option A + accelerated Option C. Current deployment violates EU AI Act §6(1) and creates documented discriminatory harm unsuitable for criminal justice applications.
+**Option 3: Human-in-the-Loop Hybrid (30–90 days)**
+- Deploy COMPAS as advisory only (flagged as experimental)
+- Require human judge override; audit 100% of African-American cases
+- Gradual transition to retrained model upon validation
+- Cost: Moderate; Maintains operations while addressing harms
+
+---
+
+## RECOMMENDATION
+
+**Hybrid approach (Option 3):** Balances immediate harm reduction with operational continuity. Escalate to legal/ethics board within 5 days.
