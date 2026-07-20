@@ -1,6 +1,6 @@
 {
   "report_metadata": {
-    "generated_at": "2026-07-13T11:55:19.379885+00:00",
+    "generated_at": "2026-07-20T11:38:58.511443+00:00",
     "dataset": "COMPAS Recidivism (ProPublica, n=6130)",
     "model": "COMPAS v1.0",
     "domain": "Criminal justice \u2014 recidivism prediction",

@@ -1,49 +1,40 @@
 # COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
 
-## REGULATORY BREACHES
+## 1. REGULATORY THRESHOLDS BREACHED
 
 **Critical Violations:**
-- **EU AI Act Disparate Impact Ratio (DIR):** African-American group at 1.74x vs. 1.25x threshold—**39% overage**
-- **NIST False Positive Rate (FPR):** African-American group at 42.3% vs. 15pp gap limit—**27.3 percentage point violation**
-- **NIST False Negative Rate (FNR):** All groups exceed limits by 13.5–51.1pp; Caucasian worst at 49.6% vs. limit
+- **EU AI Act (Disparate Impact Ratio):** African-American DIR of 1.74x exceeds 1.25x threshold by **39% (0.49x overage)**
+- **NIST FPR Gap:** African-American FPR of 42.3% vs. Caucasian 22.0% creates **20.3 percentage point gap**, exceeding 15.0pp limit by **35%**
 
 **Secondary Violations:**
-- US 4/5ths rule implicitly breached: Hispanic (0.84x) and Other (0.62x) show reverse discrimination signals
+- **NIST FNR Gap:** Caucasian (49.6%), Hispanic (58.2%), and Other (66.1%) groups all exceed 15.0pp threshold relative to African-American baseline (28.5%)—gaps of 21.1pp, 29.7pp, and 37.6pp respectively
 
----
+## 2. AFFECTED GROUPS & REAL-WORLD HARM
 
-## AFFECTED GROUPS & REAL-WORLD HARM
+**Primary Impact (African-American, n=3,175):**
+- 1.74x higher recidivism risk scores despite equivalent actual behavior, driving discriminatory detention decisions
+- False positive rate of 42.3% means ~1,345 individuals flagged as high-risk when they pose no actual threat
 
-**Primary Impact:** 3,175 African-American defendants face:
-- **2.74x higher false positive rate** (42.3% vs. 22% for Caucasians)—innocent individuals flagged as high-risk, leading to longer sentences, bail denial, or enhanced monitoring
-- Systemic bias embedding historical discrimination into sentencing decisions
+**Secondary Impact (Other groups, n=2,955):**
+- Hispanic and Other populations systematically under-flagged (FNR 58.2%–66.1%), reducing pretrial support intervention, increasing reoffense risk
+- Caucasian population experiences high FNR (49.6%), though lower FPR bias
 
-**Secondary Impact:** 2,103 Caucasian defendants experience:
-- 49.6% false negative rate—dangerous offenders released/undertreated, compromising public safety
+**Systemic Harm:** Algorithmic bias compounds over 6,130 criminal justice decisions, perpetuating racial disparities in incarceration and recidivism outcomes.
 
----
+## 3. REMEDIATION OPTIONS
 
-## REMEDIATION OPTIONS
+**Option A: Immediate Withdrawal (0–30 days)**
+- Cease COMPAS deployment; revert to human assessment protocols
+- Cost: High operational disruption; lowest technical risk
 
-**Option 1: Immediate Decommission (0–30 days)**
-- Remove COMPAS v1.0 from production pending retraining
-- Implement human-only review for pending cases
-- Cost: High operational burden; Legal risk reduction: Maximum
+**Option B: Fairness Constraint Retraining (60–120 days)**
+- Retrain with group-fairness constraints (equalizing FPR/FNR across races)
+- Re-audit against thresholds; deploy only if DIR ≤1.25x, FPR gap ≤15pp
+- Cost: Moderate; acceptable risk if validation successful
 
-**Option 2: Bias Mitigation + Retraining (60–120 days)**
-- Retrain on balanced datasets; apply fairness constraints (equalized FPR ≤20pp across groups)
-- Implement threshold adjustment per demographic group
-- Audit requirement: Monthly reporting to regulators
-- Risk: Requires validation; continued exposure during retraining
+**Option C: Human-in-the-Loop Deployment (30–90 days)**
+- Implement transparent risk score display with mandatory judicial override capability
+- Mandate documentation of departures from algorithm recommendations
+- Cost: Moderate; reduces autonomous harm while preserving data
 
-**Option 3: Human-in-the-Loop Hybrid (30–90 days)**
-- Deploy COMPAS as advisory only (flagged as experimental)
-- Require human judge override; audit 100% of African-American cases
-- Gradual transition to retrained model upon validation
-- Cost: Moderate; Maintains operations while addressing harms
-
----
-
-## RECOMMENDATION
-
-**Hybrid approach (Option 3):** Balances immediate harm reduction with operational continuity. Escalate to legal/ethics board within 5 days.
+**Recommended:** Option B, with mandatory re-audit before deployment.
