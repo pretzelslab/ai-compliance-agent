@@ -1,30 +1,28 @@
 **MEMORANDUM**
 
 TO: Chief Risk Officer
-FROM: Compliance Analysis Team
+FROM: AI Compliance Analysis Team
 DATE: [Current Date]
 RE: DEPLOYMENT BLOCK — COMPAS v1.0
 
----
+**DEPLOYMENT PROHIBITION**
 
-**RECOMMENDATION: DO NOT DEPLOY**
+COMPAS v1.0 is **BLOCKED from deployment** effective immediately. The model violates critical regulatory frameworks:
 
-COMPAS v1.0 fails critical regulatory compliance thresholds and cannot be released to production.
+- **EU AI Act breach**: African-American disparate impact ratio of 1.74x exceeds 1.25x threshold by 39%
+- **NIST FPR compliance failure**: African-American false positive rate gap of 42.3% vs. Caucasian 22.0% (20.3pp differential) exceeds 15.0pp ceiling
+- **Systematic bias across 3,175 individuals**: African-American cohort demonstrates disproportionate false positive flagging for recidivism
 
-**SPECIFIC BREACHES:**
-- EU AI Act violation: African-American disparity index of 1.74x exceeds 1.25x threshold
-- NIST FPR compliance failure: 42.3% false positive rate for African-Americans exceeds 15.0 percentage point gap standard
-- 4/5ths rule violation: Disparate impact affecting three of four demographic groups
+**MOST SEVERELY AFFECTED GROUP**
 
-**MOST SEVERELY AFFECTED GROUP:**
-African-American defendants (n=3,175) face 74% higher false positive rates, resulting in systematic over-classification for recidivism risk. Real-world consequence: innocent individuals subjected to harsher sentencing recommendations, bail conditions, and parole restrictions.
+African-American defendants (n=3,175) face the highest real-world harm: 1.74x higher disparate impact and 42.3% false positive rate. Consequence: wrongful preventive detention recommendations, compounding criminal justice inequities and violating civil rights protections.
 
-**REQUIRED ACTIONS BEFORE REDEPLOYMENT:**
+**REQUIRED REMEDIATION BEFORE REDEPLOYMENT**
 
-1. Conduct bias audit with external vendor; identify root causes in training data or model architecture
-2. Implement stratified threshold optimization to achieve ≤1.25x DIR and ≤15.0pp FPR gap across all groups
-3. Revalidate on holdout test set (minimum n=1,000 per group)
-4. Obtain legal review confirming regulatory alignment
-5. Establish bias monitoring dashboard with quarterly audits
+1. Conduct algorithmic bias audit identifying root causal factors
+2. Retrain model with balanced datasets and fairness constraints
+3. Implement group-specific performance thresholds meeting EU AI Act (DIR ≤1.25x) and NIST standards (FPR/FNR gaps ≤15.0pp)
+4. Complete independent third-party validation
+5. Establish ongoing monitoring protocols for disparate impact
 
-Redeployment prohibited until all conditions satisfied.
+**Redeployment prohibited until all conditions satisfied.**
