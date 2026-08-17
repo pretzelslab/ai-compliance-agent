@@ -1,42 +1,27 @@
 # COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
 
-## 1. REGULATORY THRESHOLDS BREACHED
+**REGULATORY BREACHES**
 
-**Critical Violations:**
-- **EU AI Act Disparate Impact Ratio (DIR):** African-American DIR = 1.74x vs. threshold of 1.25x — **breach of 0.49x (39% overage)**
-- **NIST False Positive Rate (FPR) Gap:** African-American FPR = 42.3% vs. Caucasian 22.0% — **gap of 20.3 percentage points (pp) vs. 15.0pp threshold — breach of 5.3pp (35% overage)**
+The model breaches multiple critical thresholds:
 
-**Secondary Violations:**
-- NIST False Negative Rate (FNR) gaps exceed 15.0pp threshold across all non-African-American groups (Caucasian: 49.6%, Hispanic: 58.2%, Other: 66.1%)
+1. **EU AI Act (Disparate Impact Ratio)**: African-American cohort (n=3,175) shows DIR of 1.74x against the 1.25x threshold—a **39% overage**. This represents the most severe violation across all metrics.
 
-## 2. AFFECTED GROUPS & REAL-WORLD HARM
+2. **NIST FPR Gap**: African-American false positive rate of 42.3% exceeds the allowable 15.0pp differential by **27.3 percentage points**—a **182% exceedance**.
 
-**African-Americans (n=3,175):** 1.74x higher likelihood of false positive predictions (flagged as high-risk when low-risk). At 42.3% FPR, approximately **1,342 individuals incorrectly classified as recidivism risks**, leading to: harsher sentencing, bail denial, parole denial, and perpetuated incarceration.
+3. **NIST FNR Gap**: Three cohorts breach thresholds—Caucasian (49.6%), Hispanic (58.2%), and Other (66.1%) populations exceed limits by 34.6pp, 43.2pp, and 51.1pp respectively.
 
-**Caucasians (n=2,103):** 49.6% FNR means dangerous individuals underestimated; public safety risk.
+**AFFECTED GROUPS & HARM**
 
-**Hispanic (n=509) & Other (n=343):** Extreme FNR rates (58.2%–66.1%) indicate systematic underestimation of risk, creating parallel public safety exposure.
+- **African-Americans (n=3,175)**: 1.74x higher likelihood of false high-risk classification; 42.3% incorrectly flagged as high-risk when they are not. Real-world impact: wrongful detention, bail denials, sentencing enhancement.
+- **Caucasians (n=2,103)**: 49.6% false negative rate; nearly half classified as low-risk despite recidivism, creating public safety gaps.
+- **Hispanic (n=509) & Other (n=343)**: Similar FNR failures create inconsistent risk assessment reliability.
 
-## 3. REMEDIATION OPTIONS
+**REMEDIATION OPTIONS**
 
-**Option A: Immediate Suspension (0–30 days)**
-- Halt COMPAS deployment in sentencing/parole decisions
-- Conduct root-cause analysis of training data bias
-- Timeline: 30 days to interim findings
-- Cost: Operational disruption; legal exposure if not transparent
+1. **Immediate Suspension (0-30 days)**: Halt COMPAS deployment pending urgent retraining with balanced datasets stratified by race. Implement manual review for all high-risk recommendations. *Timeline: 30 days.*
 
-**Option B: Recalibration & Fairness Retraining (60–120 days)**
-- Retrain model with stratified sampling and fairness constraints (demographic parity/equalized odds)
-- Implement separate decision thresholds by demographic group
-- External validation audit
-- Timeline: 120 days to redeployment
-- Risk: Technical parity may reduce overall predictive accuracy
+2. **Algorithmic Recalibration (60-120 days)**: Retrain using 50/50 demographic sampling, apply fairness constraints (Fairlearn, AI Fairness 360), and validate DIR ≤1.25x and FPR gap ≤15pp across all groups. *Timeline: 120 days.*
 
-**Option C: Hybrid Human-in-the-Loop (90–180 days)**
-- Deploy model with mandatory judicial override protocols for flagged disparities
-- Require annotated explanations for high-risk classifications
-- Continuous monitoring dashboard (monthly FPR/FNR audit)
-- Phase out pure algorithmic decisions by 180 days
-- Most compliant but resource-intensive
+3. **Phased Replacement (90-180 days)**: Develop alternative model prioritizing fairness metrics; pilot with 10% caseload; conduct independent third-party validation before full deployment. Maintain human oversight indefinitely. *Timeline: 180 days.*
 
-**Recommendation:** Option B with Option C monitoring—prioritizes legal compliance and fairness while maintaining operational continuity.
+**Recommendation**: Option 2 (recalibration) balances urgency with thoroughness, given the criminal justice context's irreversible harms.
