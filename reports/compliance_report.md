@@ -1,27 +1,32 @@
 # COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
 
-**REGULATORY BREACHES**
+## 1. REGULATORY THRESHOLDS BREACHED
 
-The model breaches multiple critical thresholds:
+**Critical Violations:**
+- **Disparate Impact Ratio (DIR)** – African-American cohort: 1.74x vs. 1.25x threshold = **39% overage**
+- **False Positive Rate (FPR)** – African-American cohort: 42.3% vs. 15.0pp gap threshold = **27.3 percentage points over limit**
+- **False Negative Rate (FNR)** – All groups exceed 15.0pp threshold:
+  - Caucasian: 49.6pp over (+34.6pp)
+  - Hispanic: 58.2pp over (+43.2pp)
+  - Other: 66.1pp over (+51.1pp)
 
-1. **EU AI Act (Disparate Impact Ratio)**: African-American cohort (n=3,175) shows DIR of 1.74x against the 1.25x threshold—a **39% overage**. This represents the most severe violation across all metrics.
+## 2. AFFECTED GROUPS AND REAL-WORLD HARM
 
-2. **NIST FPR Gap**: African-American false positive rate of 42.3% exceeds the allowable 15.0pp differential by **27.3 percentage points**—a **182% exceedance**.
+**Primary Impact (n=3,175):** African-American defendants face 1.74× higher likelihood of false high-risk classifications, resulting in disproportionate bail denials, longer sentences, and restricted parole eligibility. The 42.3% FPR means ~1,344 individuals are incorrectly flagged as high-risk.
 
-3. **NIST FNR Gap**: Three cohorts breach thresholds—Caucasian (49.6%), Hispanic (58.2%), and Other (66.1%) populations exceed limits by 34.6pp, 43.2pp, and 51.1pp respectively.
+**Secondary Impact (n=2,955):** Caucasian, Hispanic, and Other defendants experience compounded false negatives, allowing higher actual recidivism risks to be underestimated, affecting public safety and crime victims.
 
-**AFFECTED GROUPS & HARM**
+**Systemic Harm:** Perpetuates mass incarceration disparities and undermines judicial fairness across 6,130 individuals.
 
-- **African-Americans (n=3,175)**: 1.74x higher likelihood of false high-risk classification; 42.3% incorrectly flagged as high-risk when they are not. Real-world impact: wrongful detention, bail denials, sentencing enhancement.
-- **Caucasians (n=2,103)**: 49.6% false negative rate; nearly half classified as low-risk despite recidivism, creating public safety gaps.
-- **Hispanic (n=509) & Other (n=343)**: Similar FNR failures create inconsistent risk assessment reliability.
+## 3. REMEDIATION OPTIONS WITH TIMELINES
 
-**REMEDIATION OPTIONS**
+**Option A: Model Retraining (9-12 months)**
+Retrain COMPAS v2.0 with balanced demographic sampling and fairness-constrained optimization (Pareto frontier approach). Cost: $180K. Risk: Extended system downtime.
 
-1. **Immediate Suspension (0-30 days)**: Halt COMPAS deployment pending urgent retraining with balanced datasets stratified by race. Implement manual review for all high-risk recommendations. *Timeline: 30 days.*
+**Option B: Immediate Recalibration with Human Review (3-6 months)**
+Implement risk score adjustments and mandate judicial override protocols for African-American defendants. Deploy parallel review system. Cost: $45K. Risk: Incomplete technical remediation.
 
-2. **Algorithmic Recalibration (60-120 days)**: Retrain using 50/50 demographic sampling, apply fairness constraints (Fairlearn, AI Fairness 360), and validate DIR ≤1.25x and FPR gap ≤15pp across all groups. *Timeline: 120 days.*
+**Option C: Discontinuation + Alternative (1-3 months)**
+Suspend COMPAS deployment; transition to validated alternatives (e.g., UCLA's risk assessment tool). Cost: $95K. Risk: Judicial resistance.
 
-3. **Phased Replacement (90-180 days)**: Develop alternative model prioritizing fairness metrics; pilot with 10% caseload; conduct independent third-party validation before full deployment. Maintain human oversight indefinitely. *Timeline: 180 days.*
-
-**Recommendation**: Option 2 (recalibration) balances urgency with thoroughness, given the criminal justice context's irreversible harms.
+**Recommendation:** Pursue Option A with concurrent Option B deployment. Begin immediate human review oversight while technical remediation proceeds.
