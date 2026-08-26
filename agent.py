@@ -28,10 +28,10 @@ GROUP FINDINGS:
 {state["severity_summary"]}
 
 THRESHOLDS APPLIED:
-- EU AI Act DIR threshold: <= {r["thresholds_applied"]["eu_ai_act_dir"]}x
+- Illustrative DIR governance threshold: <= {r["thresholds_applied"]["eu_ai_act_dir"]}x
 - US 4/5ths rule: >= {r["thresholds_applied"]["us_fourfifths"]} approval ratio
-- NIST FPR gap: <= {r["thresholds_applied"]["nist_fpr_gap_pp"]}pp
-- NIST FNR gap: <= {r["thresholds_applied"]["nist_fnr_gap_pp"]}pp
+- Illustrative FPR gap threshold: <= {r["thresholds_applied"]["nist_fpr_gap_pp"]}pp
+- Illustrative FNR gap threshold: <= {r["thresholds_applied"]["nist_fnr_gap_pp"]}pp
 """.strip()
 
 def call_haiku(prompt):
