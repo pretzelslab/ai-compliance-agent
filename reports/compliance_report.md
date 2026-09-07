@@ -1,30 +1,33 @@
 # COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
 
-## 1. REGULATORY THRESHOLDS BREACHED
+## 1. REGULATORY THRESHOLD BREACHES
 
 **Critical Violations:**
-- **Disparate Impact Ratio (DIR)**: African-American DIR = 1.74x vs. threshold of 1.25x (39% overage)
-- **False Positive Rate (FPR)**: African-American FPR = 42.3% vs. threshold of 15.0pp gap (27.3pp overage)
-- **False Negative Rate (FNR)**: All groups exceed 15.0pp threshold; Hispanic FNR gap = 43.2pp (worst performer)
-- **4/5ths Rule**: Hispanic approval ratio = 0.84x (marginal compliance); African-American at 1.74x represents systematic disparity
+
+- **Disparate Impact Ratio (DIR)**: African-American group achieved 1.74x against 1.25x threshold — **39% overage**
+- **False Positive Rate (FPR)**: African-American FPR of 42.3% vs. 15.0pp threshold — **27.3 percentage points above limit** (182% exceedance)
+- **False Negative Rate (FNR)**: All groups failed. Caucasian FNR 49.6% vs. 15.0pp threshold — **34.6pp overage**; Hispanic 58.2% (**43.2pp overage**); Other 66.1% (**51.1pp overage**)
+
+**Regulatory Framework Failures:**
+- EU AI Act (high-risk criminal justice): African-American group only
+- NIST AI RMF thresholds: All racial groups across FPR/FNR metrics
 
 ## 2. AFFECTED GROUPS & REAL-WORLD HARM
 
-**Primary Impact (African-American, n=3,175):**
-- 42.3% false positive rate means ~1,343 individuals flagged as high-risk despite low recidivism likelihood
-- Elevated bail recommendations, sentencing enhancements, and parole denials based on erroneous predictions
-- DIR of 1.74x indicates systematic over-flagging
+**African-American defendants (n=3,175):** 42.3% falsely flagged as high-risk; 1.74x higher adverse decisions. Compounded incarceration and recidivism risk through algorithmic bias.
 
-**Secondary Impact (All populations, n=6,130):**
-- Cascading FNR failures create false negatives across all groups, risking public safety and justice system fairness
-- Hispanic population (n=509) most severely affected by FNR (58.2%), underflagging actual risk
+**Caucasian defendants (n=2,103):** 49.6% false negatives mask actual risk; systematic under-supervision despite recidivism likelihood.
+
+**Hispanic & Other groups (n=852):** 58-66% false negatives create disparate under-detection; resource misallocation and differential treatment.
+
+**Systemic harm:** 3,689 individuals across protected groups received inaccurate risk assessments affecting bail decisions, sentencing, and parole eligibility.
 
 ## 3. REMEDIATION OPTIONS
 
-**Option A (Immediate – 30 days):** Deploy bias mitigation algorithm (fairness-aware thresholding). Recalibrate decision boundaries to reduce African-American FPR to ≤25%, DIR to ≤1.30x. Cost: $45K; Risk: partial compliance.
+**Option A (Immediate, 30 days):** Halt deployment; issue advisory to judicial stakeholders. Retrain model with stratified sampling and fairness constraints (DIR ≤1.15x). **Timeline: 60 days.**
 
-**Option B (Short-term – 90 days):** Comprehensive model retraining with stratified cross-validation and threshold optimization per demographic group. Target: DIR ≤1.25x, FPR ≤20pp all groups. Cost: $120K; Risk: moderate.
+**Option B (Moderate, 90 days):** Implement human-in-the-loop review for African-American flagged cases. Recalibrate thresholds per demographic group. Parallel audit of historical decisions. **Timeline: 120 days.**
 
-**Option C (Long-term – 180 days):** Model decommissioning + development of alternative assessment framework (human-in-loop review, explainable features). Cost: $250K; Risk: none; Recommended for high-stakes criminal justice applications.
+**Option C (Long-term, 6 months):** Replace COMPAS with fairness-certified alternative (e.g., constraint-based regression). Establish ongoing monitoring dashboard. Conduct retrospective justice review for affected individuals. **Timeline: 180 days + ongoing.**
 
-**Recommendation:** Pursue Option C given DOUBLE-CRITICAL severity and criminal justice stakes. Interim use of Option A acceptable only with mandatory human oversight.
+**Recommendation:** Implement Option A immediately (system halt + retraining) while designing Option C for permanent replacement.
