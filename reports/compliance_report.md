@@ -1,33 +1,41 @@
 # COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
 
-## 1. REGULATORY THRESHOLD BREACHES
+## REGULATORY BREACHES
 
 **Critical Violations:**
+- **Disparate Impact Ratio (DIR)**: African-American group at 1.74x baseline—exceeds 1.25x threshold by 39%. This violates EU AI Act high-risk requirements and US adverse impact standards.
+- **False Positive Rate (FPR)**: African-American FPR of 42.3% vs. Caucasian 22.0% = 20.3 percentage point gap, exceeding 15.0pp threshold by 35%.
+- **False Negative Rate (FNR)**: Disparate patterns across all groups; Caucasian FNR (49.6%) creates inverse harm compared to African-American FNR (28.5%), indicating systematic bias directionality.
 
-- **Disparate Impact Ratio (DIR)**: African-American group achieved 1.74x against 1.25x threshold — **39% overage**
-- **False Positive Rate (FPR)**: African-American FPR of 42.3% vs. 15.0pp threshold — **27.3 percentage points above limit** (182% exceedance)
-- **False Negative Rate (FNR)**: All groups failed. Caucasian FNR 49.6% vs. 15.0pp threshold — **34.6pp overage**; Hispanic 58.2% (**43.2pp overage**); Other 66.1% (**51.1pp overage**)
+**Secondary Violations:**
+- Hispanic and Other groups show extreme FNR gaps (58.2pp and 66.1pp respectively above threshold).
 
-**Regulatory Framework Failures:**
-- EU AI Act (high-risk criminal justice): African-American group only
-- NIST AI RMF thresholds: All racial groups across FPR/FNR metrics
+---
 
-## 2. AFFECTED GROUPS & REAL-WORLD HARM
+## AFFECTED GROUPS & REAL-WORLD HARM
 
-**African-American defendants (n=3,175):** 42.3% falsely flagged as high-risk; 1.74x higher adverse decisions. Compounded incarceration and recidivism risk through algorithmic bias.
+**African-American defendants (n=3,175)**: 1.74x higher likelihood of false positive (flagged high-risk when actually low-risk), leading to over-incarceration, bail denials, and sentencing enhancements.
 
-**Caucasian defendants (n=2,103):** 49.6% false negatives mask actual risk; systematic under-supervision despite recidivism likelihood.
+**Caucasian defendants (n=2,103)**: 49.6% FNR means nearly half flagged low-risk despite recidivating, creating public safety gaps and unequal accountability.
 
-**Hispanic & Other groups (n=852):** 58-66% false negatives create disparate under-detection; resource misallocation and differential treatment.
+**Hispanic & Other populations (n=852)**: Extreme false negatives indicate systematic under-prediction of risk, generating inconsistent justice outcomes.
 
-**Systemic harm:** 3,689 individuals across protected groups received inaccurate risk assessments affecting bail decisions, sentencing, and parole eligibility.
+---
 
-## 3. REMEDIATION OPTIONS
+## REMEDIATION OPTIONS
 
-**Option A (Immediate, 30 days):** Halt deployment; issue advisory to judicial stakeholders. Retrain model with stratified sampling and fairness constraints (DIR ≤1.15x). **Timeline: 60 days.**
+**Option 1: Model Retraining (6-9 months)**
+- Rebalance training data; implement fairness constraints (DIR ≤1.15x, FPR gap ≤8pp)
+- Parallel validation testing; re-audit at 3-month intervals
+- *Cost: High; Risk: Reduced predictive accuracy overall*
 
-**Option B (Moderate, 90 days):** Implement human-in-the-loop review for African-American flagged cases. Recalibrate thresholds per demographic group. Parallel audit of historical decisions. **Timeline: 120 days.**
+**Option 2: Threshold Adjustment + Human Review (3-4 months)**
+- Recalibrate decision boundaries by race; implement mandatory human override for borderline cases
+- Audit compliance monthly
+- *Cost: Moderate; Risk: Operational delays*
 
-**Option C (Long-term, 6 months):** Replace COMPAS with fairness-certified alternative (e.g., constraint-based regression). Establish ongoing monitoring dashboard. Conduct retrospective justice review for affected individuals. **Timeline: 180 days + ongoing.**
+**Option 3: Immediate Suspension (0 months)**
+- Withdraw model pending full remediation; revert to human-only decision-making
+- *Cost: Operational disruption; Risk: Litigation exposure if continued*
 
-**Recommendation:** Implement Option A immediately (system halt + retraining) while designing Option C for permanent replacement.
+**Recommendation**: Option 1 + parallel Option 2 implementation to achieve compliance within 6 months while maintaining functional deployment under heightened oversight.
