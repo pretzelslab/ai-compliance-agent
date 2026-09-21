@@ -1,41 +1,54 @@
-# COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
+# COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM PREDICTION MODEL
 
-## REGULATORY BREACHES
-
-**Critical Violations:**
-- **Disparate Impact Ratio (DIR)**: African-American group at 1.74x baseline—exceeds 1.25x threshold by 39%. This violates EU AI Act high-risk requirements and US adverse impact standards.
-- **False Positive Rate (FPR)**: African-American FPR of 42.3% vs. Caucasian 22.0% = 20.3 percentage point gap, exceeding 15.0pp threshold by 35%.
-- **False Negative Rate (FNR)**: Disparate patterns across all groups; Caucasian FNR (49.6%) creates inverse harm compared to African-American FNR (28.5%), indicating systematic bias directionality.
-
-**Secondary Violations:**
-- Hispanic and Other groups show extreme FNR gaps (58.2pp and 66.1pp respectively above threshold).
+**EXECUTIVE SUMMARY**
+COMPAS v1.0 fails critical compliance standards across multiple regulatory frameworks, posing systemic risk to 6,130 individuals in criminal justice decision-making.
 
 ---
 
-## AFFECTED GROUPS & REAL-WORLD HARM
+## 1. REGULATORY THRESHOLDS BREACHED
 
-**African-American defendants (n=3,175)**: 1.74x higher likelihood of false positive (flagged high-risk when actually low-risk), leading to over-incarceration, bail denials, and sentencing enhancements.
+**African-American Population (n=3,175) — CRITICAL:**
+- Disparate Impact Ratio: 1.74x (threshold: ≤1.25x) — **39% overage**
+- False Positive Rate: 42.3% (threshold: ≤15.0pp gap) — **27.3 percentage points above threshold**
+- EU AI Act: FAILED (high-risk discriminatory outcome)
+- NIST AI RMF: FAILED (unacceptable FPR disparity)
 
-**Caucasian defendants (n=2,103)**: 49.6% FNR means nearly half flagged low-risk despite recidivating, creating public safety gaps and unequal accountability.
-
-**Hispanic & Other populations (n=852)**: Extreme false negatives indicate systematic under-prediction of risk, generating inconsistent justice outcomes.
+**Additional Populations:**
+- Caucasian: FNR 49.6% vs. 15.0pp threshold — **34.6pp breach**
+- Hispanic: FNR 58.2% vs. 15.0pp threshold — **43.2pp breach**
+- Other: FNR 66.1% vs. 15.0pp threshold — **51.1pp breach**
 
 ---
 
-## REMEDIATION OPTIONS
+## 2. AFFECTED GROUPS & REAL-WORLD HARM
 
-**Option 1: Model Retraining (6-9 months)**
-- Rebalance training data; implement fairness constraints (DIR ≤1.15x, FPR gap ≤8pp)
-- Parallel validation testing; re-audit at 3-month intervals
-- *Cost: High; Risk: Reduced predictive accuracy overall*
+**African-American defendants (3,175):** 74% higher flagging for recidivism risk; 42.3% experience false imprisonment recommendations, undermining due process and perpetuating systemic bias in sentencing.
 
-**Option 2: Threshold Adjustment + Human Review (3-4 months)**
-- Recalibrate decision boundaries by race; implement mandatory human override for borderline cases
-- Audit compliance monthly
-- *Cost: Moderate; Risk: Operational delays*
+**Caucasian defendants (2,103):** High false negative rates (49.6%) result in dangerous underestimation of recidivism risk, compromising public safety decisions.
 
-**Option 3: Immediate Suspension (0 months)**
-- Withdraw model pending full remediation; revert to human-only decision-making
-- *Cost: Operational disruption; Risk: Litigation exposure if continued*
+**Hispanic & Other populations (852):** Compounded FNR disparities create unpredictable, inequitable risk assessments.
 
-**Recommendation**: Option 1 + parallel Option 2 implementation to achieve compliance within 6 months while maintaining functional deployment under heightened oversight.
+**Cumulative harm:** Biased predictions entrench discriminatory sentencing patterns affecting 6,130+ individuals annually.
+
+---
+
+## 3. REMEDIATION OPTIONS
+
+**Option A: Immediate Suspension (0–30 days)**
+- Halt COMPAS deployment pending human review
+- Implement manual risk assessment protocols
+- Timeline: 30-day emergency assessment
+
+**Option B: Algorithmic Recalibration (60–120 days)**
+- Retrain with stratified sampling ensuring balanced representation
+- Apply fairness constraints (demographic parity, equalized odds)
+- Independent third-party validation
+- Timeline: 90 days + ongoing monitoring
+
+**Option C: Hybrid Replacement (120–180 days)**
+- Develop human-in-loop decision framework combining algorithmic input with judicial discretion
+- Deploy alternative fairness-audited model or human experts
+- Establish ongoing bias monitoring dashboard
+- Timeline: 180 days to full implementation
+
+**Recommendation:** Pursue Option B with accelerated timeline, pending Option C development as long-term solution.
