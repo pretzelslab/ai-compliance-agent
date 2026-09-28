@@ -1,28 +1,30 @@
 **MEMORANDUM**
 
 **TO:** Chief Risk Officer
-**FROM:** AI Compliance Analysis
+**FROM:** AI Compliance Analysis Team
 **DATE:** [Current Date]
-**RE:** DEPLOYMENT BLOCK — COMPAS v1.0 | Criminal Justice Domain
+**RE:** DEPLOYMENT BLOCK — COMPAS v1.0 Recidivism Model
 
 ---
 
-**DECISION: DO NOT DEPLOY**
+**DECISION: MODEL MUST NOT BE DEPLOYED**
 
 **Specific Breaches Identified:**
-COMPAS v1.0 violates three regulatory frameworks across critical thresholds:
-- **EU AI ACT violation:** Disparate Impact Ratio (DIR) for African-American cohort = 1.74x (threshold: ≤1.25x)
-- **NIST FPR breach:** False Positive Rate gap = +27.3 percentage points vs. Caucasian baseline (threshold: ≤15.0pp)
-- **4/5ths Rule violation:** African-American approval ratio = 0.80x (threshold: ≥0.80x, marginal fail)
+COMPAS v1.0 violates three regulatory frameworks across the African-American cohort (n=3,175):
+
+1. **EU AI Act violation:** Disparate Impact Ratio of 1.74x exceeds governance threshold (≤1.25x)
+2. **NIST AI RMF violation:** False Positive Rate of 42.3% exceeds 15.0pp differential threshold versus Caucasian baseline (22.0%)
+3. **4/5ths Rule violation:** Approval ratio of 0.80 approaches non-compliance boundary
 
 **Most Severely Affected Group & Real-World Consequence:**
-African-American defendants (n=3,175, 51.8% of sample) face 1.74x higher likelihood of false recidivism flags. Real-world impact: incorrect detention recommendations, prolonged incarceration, bail denial, and compounded criminal justice bias.
+African-American defendants face 74% higher false positive rates for recidivism prediction. Operationally, this produces unjust pretrial detention, bail recommendations, and sentencing enhancements affecting 3,175+ individuals in the dataset cohort alone—perpetuating systemic criminal justice bias.
 
 **Required Actions Before Redeployment:**
 
-1. **Root cause analysis** — audit training data for historical bias (n=6,130 dataset composition review)
-2. **Algorithmic remediation** — retrain with fairness constraints targeting DIR ≤1.25x and FPR/FNR gaps ≤15.0pp across all groups
-3. **Independent validation** — third-party audit on balanced holdout set (minimum n=2,000 per demographic)
-4. **Governance approval** — documented sign-off from Legal, Ethics Board, and CRO before production consideration
+1. Conduct root-cause analysis of training dataset composition and feature engineering
+2. Implement stratified fairness retraining with group parity constraints (DIR ≤1.25x, FPR/FNR gaps ≤15.0pp)
+3. Establish independent external audit (non-vendor)
+4. Develop group-specific performance monitoring dashboards with real-time alerts
+5. Obtain legal review confirming compliance with all applicable jurisdictions
 
-**Current deployment poses unacceptable legal and reputational risk.**
+**Redeployment requires CRO sign-off post-remediation.**

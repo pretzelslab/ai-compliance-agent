@@ -1,54 +1,48 @@
-# COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM PREDICTION MODEL
-
-**EXECUTIVE SUMMARY**
-COMPAS v1.0 fails critical compliance standards across multiple regulatory frameworks, posing systemic risk to 6,130 individuals in criminal justice decision-making.
-
----
+# COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
 
 ## 1. REGULATORY THRESHOLDS BREACHED
 
-**African-American Population (n=3,175) — CRITICAL:**
-- Disparate Impact Ratio: 1.74x (threshold: ≤1.25x) — **39% overage**
-- False Positive Rate: 42.3% (threshold: ≤15.0pp gap) — **27.3 percentage points above threshold**
-- EU AI Act: FAILED (high-risk discriminatory outcome)
-- NIST AI RMF: FAILED (unacceptable FPR disparity)
+**Critical Violations:**
+- **Disparate Impact Ratio (DIR)**: African-American cohort at 1.74x vs. 1.25x threshold—**39% overage**
+- **False Positive Rate (FPR)**: African-American cohort at 42.3% vs. 15.0pp threshold—**27.3 percentage points over limit** (183% excess)
+- **False Negative Rate (FNR)**: All groups exceed 15.0pp threshold; Caucasian cohort at 49.6pp (**34.6pp overage; 231% excess**)
 
-**Additional Populations:**
-- Caucasian: FNR 49.6% vs. 15.0pp threshold — **34.6pp breach**
-- Hispanic: FNR 58.2% vs. 15.0pp threshold — **43.2pp breach**
-- Other: FNR 66.1% vs. 15.0pp threshold — **51.1pp breach**
+**Standards Failed:**
+- EU AI Act (high-risk classification criteria)
+- NIST Algorithmic Impact Assessment guidelines
+- US Equal Employment Opportunity Commission 4/5ths rule implications
 
 ---
 
 ## 2. AFFECTED GROUPS & REAL-WORLD HARM
 
-**African-American defendants (3,175):** 74% higher flagging for recidivism risk; 42.3% experience false imprisonment recommendations, undermining due process and perpetuating systemic bias in sentencing.
+**African-American defendants (n=3,175):**
+- 1.74x higher likelihood of false positive risk assessment
+- 42.3% incorrectly flagged as high-risk, leading to harsher sentencing, bail denial, or parole rejection
+- Systemic over-detention and discriminatory criminal justice outcomes
 
-**Caucasian defendants (2,103):** High false negative rates (49.6%) result in dangerous underestimation of recidivism risk, compromising public safety decisions.
+**Secondary impact—Caucasian defendants (n=2,103):**
+- 49.6% false negative rate: dangerous individuals under-flagged, creating public safety gaps
 
-**Hispanic & Other populations (852):** Compounded FNR disparities create unpredictable, inequitable risk assessments.
-
-**Cumulative harm:** Biased predictions entrench discriminatory sentencing patterns affecting 6,130+ individuals annually.
+**Cumulative harm:** Reinforced systemic racial bias in sentencing; violation of equal protection principles.
 
 ---
 
-## 3. REMEDIATION OPTIONS
+## 3. REMEDIATION OPTIONS & TIMELINES
 
-**Option A: Immediate Suspension (0–30 days)**
-- Halt COMPAS deployment pending human review
-- Implement manual risk assessment protocols
-- Timeline: 30-day emergency assessment
+**Option A: Immediate Suspension + Retraining (12 months)**
+- Halt COMPAS deployment in high-stakes contexts
+- Retrain using stratified, balanced datasets; implement fairness constraints (DIR ≤ 1.15x)
+- **Cost:** High; **Timeline:** 12 months
 
-**Option B: Algorithmic Recalibration (60–120 days)**
-- Retrain with stratified sampling ensuring balanced representation
-- Apply fairness constraints (demographic parity, equalized odds)
-- Independent third-party validation
-- Timeline: 90 days + ongoing monitoring
+**Option B: Risk-Stratified Deployment (6 months)**
+- Deploy only for low-severity classification tiers; require human review for African-American cases
+- Implement real-time bias monitoring dashboard
+- **Cost:** Moderate; **Timeline:** 6 months
 
-**Option C: Hybrid Replacement (120–180 days)**
-- Develop human-in-loop decision framework combining algorithmic input with judicial discretion
-- Deploy alternative fairness-audited model or human experts
-- Establish ongoing bias monitoring dashboard
-- Timeline: 180 days to full implementation
+**Option C: Hybrid Replacement Model (18 months)**
+- Phase out COMPAS; develop alternative risk assessment combining structured decision-making + algorithmic audit trails
+- Establish independent fairness review board
+- **Cost:** High; **Timeline:** 18 months
 
-**Recommendation:** Pursue Option B with accelerated timeline, pending Option C development as long-term solution.
+**Recommendation:** Option A—suspension and retraining addresses systemic bias at source while maintaining justice system integrity.
