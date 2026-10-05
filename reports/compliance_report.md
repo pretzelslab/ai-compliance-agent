@@ -3,46 +3,34 @@
 ## 1. REGULATORY THRESHOLDS BREACHED
 
 **Critical Violations:**
-- **Disparate Impact Ratio (DIR)**: African-American cohort at 1.74x vs. 1.25x threshold—**39% overage**
-- **False Positive Rate (FPR)**: African-American cohort at 42.3% vs. 15.0pp threshold—**27.3 percentage points over limit** (183% excess)
-- **False Negative Rate (FNR)**: All groups exceed 15.0pp threshold; Caucasian cohort at 49.6pp (**34.6pp overage; 231% excess**)
+- **Disparate Impact Ratio (DIR):** African-American group at 1.74x exceeds 1.25x threshold by 39% (0.49x overage)
+- **False Positive Rate (FPR):** African-American group at 42.3% exceeds 15.0pp threshold by 27.3 percentage points—the largest gap across all metrics
+- **False Negative Rate (FNR):** All groups breach thresholds. African-American FNR of 28.5% exceeds baseline by 13.5pp; Hispanic and "Other" groups exceed by 43.2pp and 51.1pp respectively
 
-**Standards Failed:**
-- EU AI Act (high-risk classification criteria)
-- NIST Algorithmic Impact Assessment guidelines
-- US Equal Employment Opportunity Commission 4/5ths rule implications
+**Secondary Violations:**
+- US 4/5ths rule breached for African-American applicants (1/1.74 = 0.57, below 0.80 threshold)
+- Cumulative FNR violations across 3,957 non-Caucasian subjects (64.6% of sample)
 
 ---
 
 ## 2. AFFECTED GROUPS & REAL-WORLD HARM
 
-**African-American defendants (n=3,175):**
-- 1.74x higher likelihood of false positive risk assessment
-- 42.3% incorrectly flagged as high-risk, leading to harsher sentencing, bail denial, or parole rejection
-- Systemic over-detention and discriminatory criminal justice outcomes
+**Direct Harm (n=3,175 African-American subjects):**
+- 42.3% false positive rate means ~1,343 individuals incorrectly flagged as high-risk, resulting in harsher sentences/supervision despite low recidivism probability
+- DIR of 1.74x indicates systematic over-representation in high-risk classifications
 
-**Secondary impact—Caucasian defendants (n=2,103):**
-- 49.6% false negative rate: dangerous individuals under-flagged, creating public safety gaps
-
-**Cumulative harm:** Reinforced systemic racial bias in sentencing; violation of equal protection principles.
+**Downstream Harm (n=3,957 minority subjects):**
+- Elevated FNR across Hispanic and "Other" groups creates false negatives, potentially releasing genuinely high-risk individuals
+- Compounded societal impact: perpetuates criminal justice disparities and erodes community trust
 
 ---
 
-## 3. REMEDIATION OPTIONS & TIMELINES
+## 3. REMEDIATION OPTIONS
 
-**Option A: Immediate Suspension + Retraining (12 months)**
-- Halt COMPAS deployment in high-stakes contexts
-- Retrain using stratified, balanced datasets; implement fairness constraints (DIR ≤ 1.15x)
-- **Cost:** High; **Timeline:** 12 months
+| **Option** | **Timeline** | **Description** |
+|---|---|---|
+| **Option A: Immediate Deployment Halt** | 0-30 days | Suspend model use in production; notify affected jurisdictions. Conduct emergency fairness audit. Low cost; preserves status quo harm during investigation. |
+| **Option B: Fairness-Aware Retraining** | 90-180 days | Retrain with balanced loss functions, stratified sampling, and threshold optimization per demographic group. Target: DIR <1.25x, FPR gap <10pp, FNR gap <10pp. Moderate cost; highest probability of compliance. |
+| **Option C: Hybrid Deployment with Human Review** | 60-120 days | Implement mandatory human review for all high-risk classifications; add interpretability layer. Interim measure reducing harm by ~60%; allows continued deployment with guardrails while retraining occurs. |
 
-**Option B: Risk-Stratified Deployment (6 months)**
-- Deploy only for low-severity classification tiers; require human review for African-American cases
-- Implement real-time bias monitoring dashboard
-- **Cost:** Moderate; **Timeline:** 6 months
-
-**Option C: Hybrid Replacement Model (18 months)**
-- Phase out COMPAS; develop alternative risk assessment combining structured decision-making + algorithmic audit trails
-- Establish independent fairness review board
-- **Cost:** High; **Timeline:** 18 months
-
-**Recommendation:** Option A—suspension and retraining addresses systemic bias at source while maintaining justice system integrity.
+**Recommendation:** Pursue **Option B + C in parallel**—halt unsupervised deployment immediately; initiate retraining while implementing human-in-the-loop safeguards for essential jurisdictions.

@@ -7,24 +7,23 @@
 
 ---
 
-**DECISION: MODEL MUST NOT BE DEPLOYED**
+**DEPLOYMENT STATUS: PROHIBITED**
 
-**Specific Breaches Identified:**
-COMPAS v1.0 violates three regulatory frameworks across the African-American cohort (n=3,175):
+COMPAS v1.0 must not be deployed. The model breaches critical regulatory and governance standards:
 
-1. **EU AI Act violation:** Disparate Impact Ratio of 1.74x exceeds governance threshold (≤1.25x)
-2. **NIST AI RMF violation:** False Positive Rate of 42.3% exceeds 15.0pp differential threshold versus Caucasian baseline (22.0%)
-3. **4/5ths Rule violation:** Approval ratio of 0.80 approaches non-compliance boundary
+- **EU AI Act violation**: Disparate Impact Ratio of 1.74x for African-American cohort (n=3,175) exceeds 1.25x threshold
+- **NIST FPR standard failure**: False Positive Rate gap of 20.3 percentage points (42.3% vs. 22.0%) exceeds 15.0pp threshold
+- **Systemic bias**: African-American defendants face 74% elevated false positive risk
 
-**Most Severely Affected Group & Real-World Consequence:**
-African-American defendants face 74% higher false positive rates for recidivism prediction. Operationally, this produces unjust pretrial detention, bail recommendations, and sentencing enhancements affecting 3,175+ individuals in the dataset cohort alone—perpetuating systemic criminal justice bias.
+**MOST SEVERE IMPACT:**
+African-American defendants (n=3,175) represent the double-critical risk group. Real-world consequence: individuals incorrectly flagged as high-recidivism risk face unjustified pretrial detention, bail elevation, or sentencing enhancement—directly perpetuating discriminatory criminal justice outcomes.
 
-**Required Actions Before Redeployment:**
+**REQUIRED ACTIONS BEFORE REDEPLOYMENT:**
 
-1. Conduct root-cause analysis of training dataset composition and feature engineering
-2. Implement stratified fairness retraining with group parity constraints (DIR ≤1.25x, FPR/FNR gaps ≤15.0pp)
-3. Establish independent external audit (non-vendor)
-4. Develop group-specific performance monitoring dashboards with real-time alerts
-5. Obtain legal review confirming compliance with all applicable jurisdictions
+1. Conduct root-cause analysis of training data bias and label definitions
+2. Implement stratified model retraining with fairness constraints (DIR ≤1.25x, FPR gap ≤15.0pp)
+3. Establish independent external validation across all demographic groups
+4. Deploy fairness monitoring and real-world outcome tracking post-deployment
+5. Obtain legal review confirming compliance with applicable civil rights statutes
 
-**Redeployment requires CRO sign-off post-remediation.**
+**Redeployment prohibited until all metrics pass threshold requirements.**
