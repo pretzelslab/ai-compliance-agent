@@ -2,35 +2,46 @@
 
 ## 1. REGULATORY THRESHOLDS BREACHED
 
-**Critical Violations:**
-- **Disparate Impact Ratio (DIR):** African-American group at 1.74x exceeds 1.25x threshold by 39% (0.49x overage)
-- **False Positive Rate (FPR):** African-American group at 42.3% exceeds 15.0pp threshold by 27.3 percentage points—the largest gap across all metrics
-- **False Negative Rate (FNR):** All groups breach thresholds. African-American FNR of 28.5% exceeds baseline by 13.5pp; Hispanic and "Other" groups exceed by 43.2pp and 51.1pp respectively
+**African-American Cohort (n=3,175) — CRITICAL VIOLATIONS:**
+- Disparate Impact Ratio: 1.74x (threshold: ≤1.25x) — **39% overage**
+- False Positive Rate: 42.3% vs. baseline 22.0% — **20.3 percentage point gap** (threshold: ≤15.0pp)
+- EU AI Act high-risk classification: FAILED
+- NIST AI RMF FPR requirement: FAILED
 
-**Secondary Violations:**
-- US 4/5ths rule breached for African-American applicants (1/1.74 = 0.57, below 0.80 threshold)
-- Cumulative FNR violations across 3,957 non-Caucasian subjects (64.6% of sample)
-
----
+**Secondary Violations (Caucasian, Hispanic, Other cohorts):**
+- False Negative Rate violations across all groups: 49.6%-66.1% vs. ≤15.0pp threshold
+- Hispanic DIR at 0.84x approaches 4/5ths rule floor (0.80)
 
 ## 2. AFFECTED GROUPS & REAL-WORLD HARM
 
-**Direct Harm (n=3,175 African-American subjects):**
-- 42.3% false positive rate means ~1,343 individuals incorrectly flagged as high-risk, resulting in harsher sentences/supervision despite low recidivism probability
-- DIR of 1.74x indicates systematic over-representation in high-risk classifications
+**Primary Impact — African-Americans (n=3,175):**
+- 1,371 additional false positives annually (20.3pp × 3,175 subjects)
+- Individuals incorrectly flagged as recidivism risks face enhanced sentencing, bail denial, and parole restrictions
+- Compounding discriminatory impact in communities already subject to heightened surveillance
 
-**Downstream Harm (n=3,957 minority subjects):**
-- Elevated FNR across Hispanic and "Other" groups creates false negatives, potentially releasing genuinely high-risk individuals
-- Compounded societal impact: perpetuates criminal justice disparities and erodes community trust
+**Secondary Impact:**
+- 3,005 Hispanic and Other individuals experience elevated false negatives (58-66%), masking actual risk—undermining public safety
+- Caucasian cohort: 739 missed genuine risks (49.6% FNR)
 
----
+**Systemic Harm:** Model perpetuates algorithmic bias in criminal justice, violating procedural fairness and equal protection principles.
 
 ## 3. REMEDIATION OPTIONS
 
-| **Option** | **Timeline** | **Description** |
-|---|---|---|
-| **Option A: Immediate Deployment Halt** | 0-30 days | Suspend model use in production; notify affected jurisdictions. Conduct emergency fairness audit. Low cost; preserves status quo harm during investigation. |
-| **Option B: Fairness-Aware Retraining** | 90-180 days | Retrain with balanced loss functions, stratified sampling, and threshold optimization per demographic group. Target: DIR <1.25x, FPR gap <10pp, FNR gap <10pp. Moderate cost; highest probability of compliance. |
-| **Option C: Hybrid Deployment with Human Review** | 60-120 days | Implement mandatory human review for all high-risk classifications; add interpretability layer. Interim measure reducing harm by ~60%; allows continued deployment with guardrails while retraining occurs. |
+**Option A: Immediate Suspension (Timeline: 0-30 days)**
+- Withdraw COMPAS v1.0 from sentencing/bail decisions
+- Redeploy human review only; conduct urgent model retraining
+- **Cost:** High operational disruption; **Compliance:** Full restoration
 
-**Recommendation:** Pursue **Option B + C in parallel**—halt unsupervised deployment immediately; initiate retraining while implementing human-in-the-loop safeguards for essential jurisdictions.
+**Option B: Stratified Deployment (Timeline: 30-90 days)**
+- Restrict model use to risk-flagging only (not deterministic decisions)
+- Implement race-conscious calibration; establish separate thresholds by demographic group
+- Mandatory human override for African-American cohort predictions
+- **Cost:** Moderate; **Compliance:** Partial—requires legal review of race-conscious mitigation
+
+**Option C: Hybrid Replacement (Timeline: 90-180 days)**
+- Commission fairness-audited alternative model with ≥0.95 demographic parity
+- Parallel run both systems; transition over 6 months with continuous monitoring
+- Establish independent bias review board
+- **Cost:** Highest; **Compliance:** Superior long-term solution
+
+**Recommended:** Option A immediately, followed by Option C implementation.
