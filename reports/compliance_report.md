@@ -1,47 +1,28 @@
 # COMPLIANCE REPORT: COMPAS v1.0 RECIDIVISM MODEL
 
-## 1. REGULATORY THRESHOLDS BREACHED
+**REGULATORY BREACHES**
 
-**African-American Cohort (n=3,175) — CRITICAL VIOLATIONS:**
-- Disparate Impact Ratio: 1.74x (threshold: ≤1.25x) — **39% overage**
-- False Positive Rate: 42.3% vs. baseline 22.0% — **20.3 percentage point gap** (threshold: ≤15.0pp)
-- EU AI Act high-risk classification: FAILED
-- NIST AI RMF FPR requirement: FAILED
+COMPAS v1.0 critically violates multiple governance frameworks:
 
-**Secondary Violations (Caucasian, Hispanic, Other cohorts):**
-- False Negative Rate violations across all groups: 49.6%-66.1% vs. ≤15.0pp threshold
-- Hispanic DIR at 0.84x approaches 4/5ths rule floor (0.80)
+- **Disparate Impact Ratio (DIR)**: African-American cohort reaches 1.74x vs. 1.25x threshold—39% overage
+- **False Positive Rate (FPR)**: African-American FPR of 42.3% exceeds 15.0pp threshold by 27.3 percentage points (182% above limit)
+- **False Negative Rate (FNR)**: All groups breach FNR thresholds (13.5–51.1pp overages); Caucasian group most severe at 49.6%
+- **4/5ths Rule**: African-American approval ratio fails equity benchmarking
 
-## 2. AFFECTED GROUPS & REAL-WORLD HARM
+**AFFECTED GROUPS & HARM**
 
-**Primary Impact — African-Americans (n=3,175):**
-- 1,371 additional false positives annually (20.3pp × 3,175 subjects)
-- Individuals incorrectly flagged as recidivism risks face enhanced sentencing, bail denial, and parole restrictions
-- Compounding discriminatory impact in communities already subject to heightened surveillance
+African-Americans (n=3,175) experience systematic disadvantage: 1.74x higher likelihood of false high-risk classifications, resulting in disproportionate detention, bail denial, and sentencing enhancement. The 42.3% FPR means approximately 1,344 individuals face incorrect risk flagging.
 
-**Secondary Impact:**
-- 3,005 Hispanic and Other individuals experience elevated false negatives (58-66%), masking actual risk—undermining public safety
-- Caucasian cohort: 739 missed genuine risks (49.6% FNR)
+Caucasians (n=2,103) demonstrate 49.6% FNR—approximately 1,044 genuinely high-risk individuals classified as low-risk, creating public safety gaps.
 
-**Systemic Harm:** Model perpetuates algorithmic bias in criminal justice, violating procedural fairness and equal protection principles.
+Hispanic (n=509) and Other (n=343) groups show extreme FNR (58.2%, 66.1%), suggesting systematic under-flagging despite smaller population sizes.
 
-## 3. REMEDIATION OPTIONS
+**REMEDIATION OPTIONS**
 
-**Option A: Immediate Suspension (Timeline: 0-30 days)**
-- Withdraw COMPAS v1.0 from sentencing/bail decisions
-- Redeploy human review only; conduct urgent model retraining
-- **Cost:** High operational disruption; **Compliance:** Full restoration
+1. **Immediate Suspension (0–30 days)**: Halt COMPAS deployment pending independent audit. Conduct bias decomposition analysis. Timeline: 4 weeks. Cost: ~$85K. Risk: Operational disruption.
 
-**Option B: Stratified Deployment (Timeline: 30-90 days)**
-- Restrict model use to risk-flagging only (not deterministic decisions)
-- Implement race-conscious calibration; establish separate thresholds by demographic group
-- Mandatory human override for African-American cohort predictions
-- **Cost:** Moderate; **Compliance:** Partial—requires legal review of race-conscious mitigation
+2. **Targeted Recalibration (30–120 days)**: Reweight algorithm thresholds by demographic group to achieve DIR ≤1.25x and FPR/FNR gaps ≤15pp. Implement separate fairness-optimized models per jurisdiction. Timeline: 12 weeks. Cost: ~$250K. Risk: Reduced predictive accuracy.
 
-**Option C: Hybrid Replacement (Timeline: 90-180 days)**
-- Commission fairness-audited alternative model with ≥0.95 demographic parity
-- Parallel run both systems; transition over 6 months with continuous monitoring
-- Establish independent bias review board
-- **Cost:** Highest; **Compliance:** Superior long-term solution
+3. **Phased Retirement with Replacement (120–365 days)**: Transition to fairness-certified alternative models (e.g., AEQUITAS-calibrated system). Maintain human-in-loop review for African-American flagged cases. Audit quarterly. Timeline: 12 months. Cost: ~$600K. Risk: Extended deployment of non-compliant system.
 
-**Recommended:** Option A immediately, followed by Option C implementation.
+**RECOMMENDATION**: Option 3 (phased retirement) balances legal obligation, stakeholder impact, and operational continuity, contingent on immediate Option 1 safeguards.
